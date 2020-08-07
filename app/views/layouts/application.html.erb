@@ -10,15 +10,6 @@
   </head>
 
   <body>
-  <%# START FLASH MESSAGES %>
-    <% if notice %>
-      <p class="notice alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end%>
-
     <%= yield %>
-  <%# END FLASH MESSAGES %>
   </body>
 </html>
