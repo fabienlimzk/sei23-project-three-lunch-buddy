@@ -1,0 +1,7 @@
+<h1>Appointments Tagged with <%= @location.name %></h1>
+
+<ul>
+  <% @location.appointments.each do |appointment| %>
+    <li><%= link_to appointment.content, appointment_path(appointment) %></li>
+  <% end %>
+</ul>

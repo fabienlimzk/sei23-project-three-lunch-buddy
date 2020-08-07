@@ -19,4 +19,10 @@ class AppointmentsController < ApplicationController
 
   def destroy
   end
+
+  private 
+
+  def appointment_params
+    params.require(:appointment).permit(:content, :status, :location_list)
+  end
 end
