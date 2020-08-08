@@ -1,2 +1,28 @@
 <h1>Appointments#new</h1>
 <p>Find me in app/views/appointments/new.html.erb</p>
+<div class=“container”>
+<%= form_for [@user, @appointment] do |f| %>
+  <div class=“form-row”>
+    <%= f.label :content, "Content" %>
+    <%= f.text_field :content %>
+  </div>
+  <div class=“form-row”>
+    <%= f.label :status, "Status" %>
+    <%= f.text_field :status %>
+  </div>
+  <% if !@user.isAdmin %>
+    <div>
+      <%= f.collection_select(:location_ids, Location.all, :id, :name, {:prompt => "Choose Location(s)"},{:multiple => true}) %>
+    </div>
+  <% end %>
+  <% if @user.isAdmin %>
+    <div>
+      <%= f.label :location_list %><br />
+      <%= f.text_field :location_list %>
+    </div>
+  <% end %>
+  <div class=“form-row”>
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>
+</div>

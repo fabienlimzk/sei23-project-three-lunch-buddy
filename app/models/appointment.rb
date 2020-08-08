@@ -1,4 +1,6 @@
 class Appointment < ApplicationRecord
+  belongs_to :user
+
   has_many :appt_locations
   has_many :locations, through: :appt_locations
 
