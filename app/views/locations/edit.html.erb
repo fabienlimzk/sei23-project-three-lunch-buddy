@@ -1,0 +1,11 @@
+<div class=“container”>
+<%= form_for @location do |f| %>
+  <div class=“form-row”>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+  </div>
+  <div class=“form-row”>
+    <%= f.submit "Save" %>
+  </div>
+<% end %>
+</div>
