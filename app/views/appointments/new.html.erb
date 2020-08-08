@@ -10,16 +10,16 @@
     <%= f.label :status, "Status" %>
     <%= f.text_field :status %>
   </div>
-  <% if !@user.isAdmin %>
-  <div>
-    <%= collection_check_boxes(:appointment, :location_ids, Location.all, :id, :name) %>
-  </div>
-  <% end %>
+  <%= if !@user.isAdmin %>
+    <div>
+      <%= f.collection_select(:location_ids, Location.all, :id, :name, {:prompt => "Choose Location(s)"},{:multiple => true}) %>
+    </div>
+  <%= end %>
   <% if @user.isAdmin %>
-  <div>
-    <%= f.label :location_list %><br />
-    <%= f.text_field :location_list %>
-  </div>
+    <div>
+      <%= f.label :location_list %><br />
+      <%= f.text_field :location_list %>
+    </div>
   <% end %>
   <div class=“form-row”>
     <%= f.submit "Submit" %>
