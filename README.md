@@ -23,6 +23,15 @@ Things you may want to cover:
 
 * ...
 
-Wireframe:
+# Wireframe 
 
 https://wireframe.cc/pro/edit/364416
+
+<img src="https://i.postimg.cc/jjHgq076/Screenshot-2020-08-07-at-5-03-26-PM.png" />
+<img src="https://i.postimg.cc/WzBgJtRd/Sign-Up.png" />
+<img src="https://i.postimg.cc/d3yTvv7w/Login.png" />
+<img src="https://i.postimg.cc/8zBMj1ZC/Profile.png" />
+<img src="https://i.postimg.cc/KzVgd480/New-Appointment.png" />
+
+
+
