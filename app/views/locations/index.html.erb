@@ -4,8 +4,8 @@
     <%= link_to location.name, location_path(location) %>
   <% if current_user.isAdmin %>
     <div class="d-block">
-      <%= link_to "Edit", edit_location_path(location)%>
-      <%= link_to "Delete", location_path(location), method: "delete", data:{confirm: "Delete this location?"} %>
+      <%= link_to "Edit", edit_location_path(location), class: "btn btn-warning" %>
+      <%= link_to "Delete", location_path(location), method: "delete", data:{confirm: "Delete this location?"}, class: "btn btn-danger" %>
     </div>
    <% end %>
   </div>
