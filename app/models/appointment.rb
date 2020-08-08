@@ -1,8 +1,8 @@
 class Appointment < ApplicationRecord
   belongs_to :user
 
-  has_many :appt_locations
-  has_many :locations, through: :appt_locations
+  has_many :appt_locations, dependent: :destroy
+  has_many :locations, through: :appt_locations, dependent: :destroy
 
   def location_list
     locations.join(", ")
