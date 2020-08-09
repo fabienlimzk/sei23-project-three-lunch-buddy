@@ -10,11 +10,9 @@
     <%= f.label :status, "Status" %>
     <%= f.text_field :status %>
   </div>
-  <% if !@user.isAdmin %>
-    <div>
-      <%= f.collection_select(:location_ids, Location.all, :id, :name, {:prompt => "Choose Location(s)"},{:multiple => true}) %>
-    </div>
-  <% end %>
+  <div>
+    <%= f.collection_select(:location_selects, Location.all, :name, :name, {:prompt => "Choose Location(s)"},{:multiple => true}) %>
+  </div>
   <% if @user.isAdmin %>
     <div>
       <%= f.label :location_list %><br />
