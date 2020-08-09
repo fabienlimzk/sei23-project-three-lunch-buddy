@@ -4,6 +4,9 @@ class Appointment < ApplicationRecord
   has_many :appt_locations, dependent: :destroy
   has_many :locations, through: :appt_locations, dependent: :destroy
 
+  validates :content, presence: true, length: { minimum: 8}
+  validates :location_ids, presence: true
+  
   def location_selects
     locations.join(", ")
   end

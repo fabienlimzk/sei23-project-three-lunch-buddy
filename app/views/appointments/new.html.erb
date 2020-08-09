@@ -11,7 +11,7 @@
     <%= f.text_field :status %>
   </div>
   <div>
-    <%= f.collection_select(:location_selects, Location.all, :name, :name, {:prompt => "Choose Location(s)"},{:multiple => true}) %>
+    <%= f.collection_select(:location_selects, Location.all, :name, :name, {:prompt => "Choose Location(s)"},{:multiple => true, :required => true}) %>
   </div>
   <% if @user.isAdmin %>
     <div>
