@@ -8,8 +8,8 @@ class Appointment < ApplicationRecord
     locations.join(", ")
   end
 
-  def location_selects=(locations_string)
-    no_empty_string = locations_string.reject { |l| l.empty? }
+  def location_selects=(locations_array)
+    no_empty_string = locations_array.reject { |l| l.empty? }
     location_parse = no_empty_string.collect{|s| s.strip.downcase}.uniq
     new_or_found_locations = location_parse.collect { |name| Location.find_or_create_by(name: name) }
     self.locations += new_or_found_locations
