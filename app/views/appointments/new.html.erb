@@ -1,6 +1,12 @@
 <h1>Appointments#new</h1>
 <p>Find me in app/views/appointments/new.html.erb</p>
 <div class=“container”>
+<% if @appointment.errors.any? %>
+  <%= pluralize(@appointment.errors.count, "error") %>
+    <% @appointment.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger"> <%= message %> </div>
+    <% end %>
+<% end %>
 <%= form_for [@user, @appointment] do |f| %>
   <div class=“form-row”>
     <%= f.label :content, "Content" %>
