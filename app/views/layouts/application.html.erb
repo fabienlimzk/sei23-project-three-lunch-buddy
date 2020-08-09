@@ -21,8 +21,8 @@
         <%= link_to "Home", appointments_path, class: "nav-item nav-link" %>
         <% if user_signed_in? %>
           <%# current_user.avatar %>
-          <%# link_to "Profile", user_path(current_user), class: "nav-item nav-link" %>
-          <%# link_to "New Appointment", new_user_appointment_path(current_user), class: "nav-item nav-link" %>
+          <%= link_to "Profile", user_path(current_user), class: "nav-item nav-link" %>
+          <%= link_to "New Appointment", new_user_appointment_path(current_user), class: "nav-item nav-link" %>
           <%= link_to "Locations", locations_path, class: "nav-item nav-link" %>
           <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
         <% else %>
