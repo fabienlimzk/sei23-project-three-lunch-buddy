@@ -12,7 +12,11 @@
   <div class="text-left">
     Location(s): 
     <% a.locations.each do |l| %>
-      <span><%= link_to l.name, location_path(l) %></span>
+       <% if a.locations.length > 1 %>
+       <%= link_to l.name, location_path(l) %>,
+       <% else %>
+       <%= link_to l.name, location_path(l) %>
+       <% end %>
     <% end %>
   </div>
   
@@ -37,4 +41,3 @@
     </div>
   <% end %>
 </div>
-
