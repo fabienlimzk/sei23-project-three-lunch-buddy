@@ -3,17 +3,38 @@
 <div class="row d-flex flex-wrap">
   <% @appointments.reverse.each do |a| %>
     <div class="border col-3 p-2 mx-1 text-center">
-        <p><b><%= a.poster.firstname %></b> is looking for a lunch buddy!</p>
-        <p><%= a.content %></p>
-        <p><%= a.status %></p>
-        <p>Date</p>
-        <p>Time</p>
+        <p><b><%= a.poster.username %></b> is looking for a lunch buddy!</p>
+        <p>"<%= a.title %>"</p>
+        <p><%# a.status %></p>
+        <p>Start: <%= l a.start_time %></p>
+        <p>End: <%= l a.end_time %></p>
 
-        <% a.locations.each do |l| %>
-          <span>Location(s): <%= link_to l.name, location_path(l) %></span>
-        <% end %>
+  <div class="text-left">
+    Location(s): 
+    <% a.locations.each do |l| %>
+      <span><%= link_to l.name, location_path(l) %></span>
+    <% end %>
+  </div>
+  
+  <div class="text-left">
+    Cuisine(s): 
+  <% a.cuisines.each do |c| %>
+  <span><%= link_to c.name, cuisine_path(c) %></span>
+  <% end %>
+  </div>
 
-        <button class="btn btn-success btn-sm">Accept Invitation</button>
+  <div class="text-left">
+    Price Range(s): 
+  <% a.prices.each do |p| %>
+  <span><%= link_to p.name, price_path(p) %></span>
+  <% end %>
+  </div>
+
+  <div class="mx-auto">
+    <%= link_to "Details", appointment_path(a), class: "btn btn-sm btn-info" %>
+    <button class="btn btn-success btn-sm">Accept Invitation</button>
+  </div>
     </div>
   <% end %>
 </div>
+

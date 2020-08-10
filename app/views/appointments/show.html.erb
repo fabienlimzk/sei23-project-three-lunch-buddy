@@ -1,2 +1,34 @@
-<h1>Appointments#show</h1>
-<p>Find me in app/views/appointments/show.html.erb</p>
+<h1 class="text-center">View appointment</h1>
+
+<div class="border col-6 p-2 mx-auto text-center">
+  <p><b><%= @appointment.poster.username %></b> is looking for a lunch buddy!</p>
+  <p>"<%= @appointment.title %>"</p>
+  <p>Status: <%= @appointment.status %></p>
+  <p>Start: <%= l @appointment.start_time %></p>
+  <p>End: <%= l @appointment.end_time %></p>
+
+  <div class="text-left">
+    Location(s): 
+    <% @appointment.locations.each do |l| %>
+      <span><%= link_to l.name, location_path(l) %></span>
+    <% end %>
+  </div>
+  
+  <div class="text-left">
+    Cuisine(s): 
+  <% @appointment.cuisines.each do |c| %>
+  <span><%= link_to c.name, cuisine_path(c) %></span>
+  <% end %>
+  </div>
+
+  <div class="text-left">
+    Price Range(s): 
+  <% @appointment.prices.each do |p| %>
+  <span><%= link_to p.name, price_path(p) %></span>
+  <% end %>
+  </div>
+
+  <div class="mx-auto">
+    <button class="btn btn-success btn-sm">Accept Invitation</button>
+  </div>
+</div>

@@ -9,10 +9,21 @@
 
 <h4 class="text-left">Create a new lunch appointment</h4>
 <%= form_for [@user, @appointment] do |f| %>
-  <div class=“form-row”>
-    <%# f.label :content, "Content" %>
-    <%= f.text_area :content, placeholder: "Looking for a lunch buddy around MBFC or Marina One area :)", :rows => 4, style: 'width:100%;' %>
+  <div class="form-group mt-3 text-left">
+    <%= f.text_field :title, placeholder: "Lunch Buddy needed!", class: "form-control" %>
   </div>
+  <div class="form-row mt-3 mx-auto">
+    <%= f.text_area :content, placeholder: "Looking for a lunch buddy around MBFC or Marina One area :)", :rows => 4, style: 'width:100%; margin:auto' %>
+  </div>
+
+  <div class="form-row mt-3 mx-auto">
+    Start: <%= datetime_field(:appointment, :start_time) %>
+  </div>
+
+    <div class="form-row mt-3 mx-auto">
+    End: <%= datetime_field(:appointment, :end_time) %>
+  </div>
+
   <div class="form-row mt-3">
     <%= f.collection_select(:cuisine_selects, Cuisine.all, :name, :name, {:prompt => "Choose Cuisine(s)"},{:multiple => true, :required => true, :class => "custom-select"}) %>
   </div>
@@ -25,15 +36,15 @@
   
   <% if @user.isAdmin %>
     <div class="form-group mt-3 text-left">
-      <%= f.label :cuisine_list %><br />
+      <%= f.label :cuisine_list, "Add cuisine" %>
       <%= f.text_field :cuisine_list, class: "form-control" %>
     </div>
     <div class="form-group mt-3 text-left">
-      <%= f.label :location_list %><br />
+      <%= f.label :location_list, "Add location" %>
       <%= f.text_field :location_list, class: "form-control" %>
     </div>
     <div class="form-group mt-3 text-left">
-      <%= f.label :price_list , "Add a new price range" %>
+      <%= f.label :price_list , "Add price range" %>
       <%= f.text_field :price_list, class: "form-control" %>
     </div>
   <% end %>
