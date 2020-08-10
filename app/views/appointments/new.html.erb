@@ -12,10 +12,10 @@
     <%= f.label :content, "Content" %>
     <%= f.text_field :content %>
   </div>
-  <div class=“form-row”>
-    <%= f.label :status, "Status" %>
-    <%= f.text_field :status %>
-  </div>
+  <%# <div class=“form-row”>
+    <%#= f.label :status, "Status" %>
+    <%#= f.text_field :status %>
+  </div> %>
   <div>
     <%= f.collection_select(:location_selects, Location.all, :name, :name, {:prompt => "Choose Location(s)"},{:multiple => true, :required => true}) %>
   </div>
