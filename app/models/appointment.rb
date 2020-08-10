@@ -4,6 +4,8 @@ class Appointment < ApplicationRecord
   has_many :appt_locations, dependent: :destroy
   has_many :locations, through: :appt_locations, dependent: :destroy
 
+  enum status: [:available, :booked]
+
   def location_list
     locations.join(", ")
   end
