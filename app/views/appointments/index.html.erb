@@ -9,9 +9,14 @@
         <p>Date</p>
         <p>Time</p>
 
+        <span>Location(s):
         <% a.locations.each do |l| %>
-          <span>Location(s): <%= link_to l.name, location_path(l) %></span>
-        <% end %>
+           <% if a.locations.length > 1 %>
+           <%= link_to l.name, location_path(l) %>,
+           <% else %>
+           <%= link_to l.name, location_path(l) %>
+           <% end %>
+        <% end %></span>
 
         <button class="btn btn-success btn-sm">Accept Invitation</button>
     </div>
