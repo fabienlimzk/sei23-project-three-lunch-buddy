@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @appointments = Appointment.where(poster_id: params[:id])
   end
 
   def destroy

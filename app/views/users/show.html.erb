@@ -1,1 +1,23 @@
-<h1 class="text-center">Your Profile</h1>
+<h1 class="text-center">Your Profile/Appointments</h1>
+
+<div class="row d-flex flex-wrap">
+  <% @appointments.reverse.each do |a| %>
+    <div class="border col-3 p-2 mx-1 text-center">
+        <p><b><%= a.poster.firstname %></b> is looking for a lunch buddy!</p>
+        <p><%= a.content %></p>
+        <p><%= a.status %></p>
+        <p>Date</p>
+        <p>Time</p>
+
+        <span>Location(s):
+        <% a.locations.each do |l| %>
+          <% if a.locations.length > 1 %>
+          <%= link_to l.name, location_path(l) %>,
+          <% else %>
+          <%= link_to l.name, location_path(l) %>
+          <% end %>
+        <% end %></span>
+        <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
+    </div>
+  <% end %>
+</div>
