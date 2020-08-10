@@ -8,16 +8,16 @@
 
 User.create(firstname: 'Default', lastname: 'User', username: 'Admin', phone: '12345678', isAdmin: true, email: 'admin@email.com', password: 'password')
 
-Appointment.create(title: 'Looking for a lunch buddy!', poster_id: 1, status: 0, start_time: DateTime.new(2020,9,14,11), end_time: DateTime.new(2020,9,14,12), content:'Wanna share good food and good conversations!', cuisine_list: "Mexican", location_list: 'CBD', price_list: '<$5')
+Appointment.create(title: 'Looking for a lunch buddy!', poster_id: 1, status: 0, start_time: DateTime.new(2020,9,14,11), end_time: DateTime.new(2020,9,14,12), content:'Wanna share good food and good conversations!', cuisine_list: "mexican", location_list: 'cbd', price_list: '<$5')
 
-Appointment.create(title: 'Come dine with me', poster_id: 1, status: 0, start_time: DateTime.new(2020,9,15,12), end_time: DateTime.new(2020,9,15,13), content:'I want to expand my palate. Join me on a food adventure!', cuisine_list: "Halal", location_list: 'CBD', price_list: '<$5')
+Appointment.create(title: 'Come dine with me', poster_id: 1, status: 0, start_time: DateTime.new(2020,9,15,12), end_time: DateTime.new(2020,9,15,13), content:'I want to expand my palate. Join me on a food adventure!', cuisine_list: "halal", location_list: 'cbd', price_list: '<$5')
 
 
-Location.create(name: 'West')
-Location.create(name: 'East')
-Location.create(name: 'Northeast')
+Location.create(name: 'west')
+Location.create(name: 'east')
+Location.create(name: 'northeast')
 
-Cuisine.create(name: 'Chinese')
+Cuisine.create(name: 'chinese')
 
 Price.create(name: '<$10')
 Price.create(name: '<$20')
