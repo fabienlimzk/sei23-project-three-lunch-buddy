@@ -30,4 +30,11 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  date:
+    formats:
+      default: "%d/%m/%Y"
+  time:
+    am: am
+    formats:
+      default: "%a, %d %b %Y at %I:%m%p"
+    pm: pm

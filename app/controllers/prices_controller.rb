@@ -1,4 +1,6 @@
 class PricesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @prices = Price.all
   end
