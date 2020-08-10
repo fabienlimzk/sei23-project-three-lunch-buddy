@@ -1,18 +1,22 @@
 <h1 class="text-center">Appointments in this area: "<%= @location.name %>"</h1>
 
-<ul>
+<div class="row d-flex flex-wrap">
   <% @location.appointments.reverse.each do |a| %>
     <div class="border col-3 p-2 mx-1 text-center">
-        <p><b><%= a.user.firstname %></b> is looking for a lunch buddy!</p>
-        <p><%= a.content %></p>
-        <p>Date</p>
-        <p>Time</p>
+        <p><b><%= a.poster.username %></b> is looking for a lunch buddy!</p>
+        <p>"<%= a.title %>"</p>
+        <p><%# a.status %></p>
+        <p>Start: <%= l a.start_time %></p>
+        <p>End: <%= l a.end_time %></p>
 
         <% a.locations.each do |l| %>
           <span>Location(s): <%= link_to l.name, location_path(l) %></span>
         <% end %>
 
-        <button class="btn btn-success btn-sm">Accept Invitation</button>
+  <div class="mx-auto">
+    <%= link_to "Details", appointment_path(a), class: "btn btn-sm btn-info" %>
+    <button class="btn btn-success btn-sm">Accept Invitation</button>
+  </div>
     </div>
   <% end %>
-</ul>
+</div>

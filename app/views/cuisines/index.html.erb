@@ -1,11 +1,13 @@
+<h1 class="text-center">All cuisines</h1>
+
 <div class="row d-flex flex-wrap">
 <% @cuisines.each do |cuisine| %>
   <div class="border col-3 p-2 mx-1 text-center">
     <%= link_to cuisine.name, cuisine_path(cuisine) %>
   <% if current_user.isAdmin %>
     <div class="d-block">
-      <%= link_to "Edit", edit_cuisine_path(cuisine), class: "btn btn-warning" %>
-      <%= link_to "Delete", cuisine_path(cuisine), method: "delete", data:{confirm: "Delete this cuisine?"}, class: "btn btn-danger" %>
+      <%= link_to "Edit", edit_cuisine_path(cuisine), class: "btn btn-warning btn-sm" %>
+      <%= link_to "Delete", cuisine_path(cuisine), method: "delete", data:{confirm: "Delete this cuisine?"}, class: "btn btn-danger btn-sm" %>
     </div>
    <% end %>
   </div>
