@@ -9,25 +9,25 @@
         <p>Start: <%= l a.start_time %></p>
         <p>End: <%= l a.end_time %></p>
 
-  <div class="text-left">
-    Location(s): 
-    <%= a.locations.map { |l| link_to l.name, location_path(l) }.join(',').html_safe %>
-  </div>
-  
-  <div class="text-left">
-    Cuisine(s): 
-    <%= a.cuisines.map { |c| link_to c.name, cuisine_path(c) }.join(',').html_safe %>
-  </div>
+        <div class="text-left">
+          Location(s): 
+          <%= a.locations.map { |l| link_to l.name, location_path(l) }.join(',').html_safe %>
+        </div>
+        
+        <div class="text-left">
+          Cuisine(s): 
+          <%= a.cuisines.map { |c| link_to c.name, cuisine_path(c) }.join(',').html_safe %>
+        </div>
 
-  <div class="text-left">
-    Price Range(s): 
-    <%= a.prices.map { |p| link_to p.name, price_path(p) }.join(',').html_safe %>
-  </div>
+        <div class="text-left">
+          Price Range(s): 
+          <%= a.prices.map { |p| link_to p.name, price_path(p) }.join(',').html_safe %>
+        </div>
 
-  <div class="mx-auto">
-    <%= link_to "Details", appointment_path(a), class: "btn btn-sm btn-info" %>
-    <button class="btn btn-success btn-sm">Accept Invitation</button>
-  </div>
+        <div class="mx-auto">
+          <%= link_to "Details", appointment_path(a), class: "btn btn-sm btn-info" %>
+          <button class="btn btn-success btn-sm">Accept Invitation</button>
+        </div>
     </div>
   <% end %>
 </div>
