@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
   def index
+    @appointments = Appointment.all
   end
 
   def show
@@ -13,7 +14,7 @@ class AppointmentsController < ApplicationController
   def create
     @user = User.find(current_user.id)
     @appointment = @user.appointments_posted.build(appointment_params)
-
+    @appointment.status = "available"
     if @appointment.save
       redirect_to user_appointments_path(current_user.id)
     else
@@ -33,6 +34,6 @@ class AppointmentsController < ApplicationController
   private 
 
   def appointment_params
-    params.require(:appointment).permit(:content, :status, :poster_id, :location_list, :cuisine_list, :price_list, price_selects: [], location_selects: [], cuisine_selects: [])
+    params.require(:appointment).permit(:content, :poster_id, :location_list, :cuisine_list, :price_list, price_selects: [], location_selects: [], cuisine_selects: [])
   end
 end

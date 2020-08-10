@@ -1,46 +1,46 @@
-<h1>Appointments#new</h1>
-<p>Find me in app/views/appointments/new.html.erb</p>
-<div class=“container”>
+<h1 class="text-center">Looking for a lunch buddy?</h1>
+<div class="card mx-auto col-7 shadow p-3 mb-5 bg-white rounded text-center">
 <% if @appointment.errors.any? %>
   <%= pluralize(@appointment.errors.count, "error") %>
     <% @appointment.errors.full_messages.each do |message| %>
       <div class="alert alert-danger"> <%= message %> </div>
     <% end %>
 <% end %>
+
+<h4 class="text-left">Create a new lunch appointment</h4>
 <%= form_for [@user, @appointment] do |f| %>
   <div class=“form-row”>
-    <%= f.label :content, "Content" %>
-    <%= f.text_field :content %>
-  </div>
-  <div class=“form-row”>
-    <%= f.label :status, "Status" %>
-    <%= f.text_field :status %>
+    <%# f.label :content, "Content" %>
+    <%= f.text_area :content, placeholder: "Looking for a lunch buddy around MBFC or Marina One area :)", :rows => 4, style: 'width:100%;' %>
   </div>
   <div>
-    <%= f.collection_select(:price_selects, Price.all, :name, :name, {:prompt => "Choose Price range"},{:multiple => true, :required => true}) %>
+    <%= f.collection_select(:cuisine_selects, Cuisine.all, :name, :name, {:prompt => "Choose Cuisine(s)"},{:multiple => true, :required => true, :class => "custom-select"}) %>
   </div>
   <div>
-    <%= f.collection_select(:cuisine_selects, Cuisine.all, :name, :name, {:prompt => "Choose Cuisine(s)"},{:multiple => true, :required => true}) %>
+    <%= f.collection_select(:location_selects, Location.all, :name, :name, {:prompt => "Choose Location(s)"},{:multiple => true, :required => true, :class => "custom-select"}) %>
   </div>
-  <div>
-    <%= f.collection_select(:location_selects, Location.all, :name, :name, {:prompt => "Choose Location(s)"},{:multiple => true, :required => true}) %>
+  <div class="form-row mt-3">
+    <%= f.collection_select(:price_selects, Price.all, :name, :name, {:prompt => "Choose Price range"},{:multiple => true, :required => true, :class => "custom-select"}) %>
   </div>
+  
   <% if @user.isAdmin %>
-    <div>
-      <%= f.label :price_list %><br />
-      <%= f.text_field :price_list %>
-    </div>
-     <div>
+     <div class="form-group mt-3 text-left">
       <%= f.label :cuisine_list %><br />
-      <%= f.text_field :cuisine_list %>
+      <%= f.text_field :cuisine_list, class: "form-control" %>
     </div>
-    <div>
+    <div class="form-group mt-3 text-left">
       <%= f.label :location_list %><br />
-      <%= f.text_field :location_list %>
+      <%= f.text_field :location_list, class: "form-control" %>
+    </div>
+    <div class="form-group mt-3 text-left">
+      <%= f.label :price_list , "Add a new price range" %>
+      <%= f.text_field :price_list, class: "form-control" %>
     </div>
   <% end %>
+
+
   <div class=“form-row”>
-    <%= f.submit "Submit" %>
+    <%= f.submit "Create appointment", class: "btn btn-success mt-3" %>
   </div>
 <% end %>
 </div>
