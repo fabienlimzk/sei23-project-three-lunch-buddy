@@ -1,5 +1,7 @@
 class Appointment < ApplicationRecord
   belongs_to :user
+  
+  enum status: [:available, :booked]
 
   has_many :appt_cuisines, dependent: :destroy
   has_many :cuisines, through: :appt_cuisines, dependent: :destroy
