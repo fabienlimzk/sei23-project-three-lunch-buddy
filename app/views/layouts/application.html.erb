@@ -24,6 +24,7 @@
           <%= link_to "Profile", user_path(current_user), class: "nav-item nav-link" %>
           <%= link_to "New Appointment", new_user_appointment_path(current_user), class: "nav-item nav-link" %>
           <%= link_to "Locations", locations_path, class: "nav-item nav-link" %>
+          <%= link_to "Price Range", prices_path, class: "nav-item nav-link" %>
           <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-item nav-link" %>
         <% else %>
           <%= link_to "Sign Up", new_user_registration_path, class: "nav-item nav-link" %>
