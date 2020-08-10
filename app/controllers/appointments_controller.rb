@@ -14,7 +14,7 @@ class AppointmentsController < ApplicationController
   def create
     @user = User.find(current_user.id)
     @appointment = @user.appointments.build(appointment_params)
-
+    @appointment.status = "available"
     if @appointment.save
       redirect_to user_appointments_path(current_user.id)
     else
@@ -34,6 +34,6 @@ class AppointmentsController < ApplicationController
   private 
 
   def appointment_params
-    params.require(:appointment).permit(:content, :status, :user_id, :location_list, :price_list, price_selects: [], location_selects: [])
+    params.require(:appointment).permit(:content, :user_id, :location_list, :price_list, price_selects: [], location_selects: [])
   end
 end
