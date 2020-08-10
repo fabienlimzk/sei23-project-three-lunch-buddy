@@ -1,19 +1,2 @@
 <h1>Appointments#index</h1>
 <p>Find me in app/views/appointments/index.html.erb</p>
-
-<table class="table table-sm mt-4">
-  <tr>
-    <td>appointment id</td>
-    <td>content</td>
-    <td>user</td>
-    <td>status</td>
-  </tr>
-    <% @appointments.each do |appointment| %>
-      <tr>
-        <td><%= appointment.id %></td>
-        <td><%= appointment.content %></td>
-        <td><%= appointment.user.username %></td>
-        <td><%= appointment.status %></td>
-      </tr>
-    <% end %>
-</table>
