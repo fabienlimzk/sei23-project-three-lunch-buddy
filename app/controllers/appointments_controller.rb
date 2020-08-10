@@ -33,6 +33,6 @@ class AppointmentsController < ApplicationController
   private 
 
   def appointment_params
-    params.require(:appointment).permit(:content, :status, :user_id, :location_list, :price_list, price_selects: [], location_selects: [])
+    params.require(:appointment).permit(:content, :status, :user_id, :location_list, :cuisine_list, :price_list, price_selects: [], location_selects: [], cuisine_selects: [])
   end
 end

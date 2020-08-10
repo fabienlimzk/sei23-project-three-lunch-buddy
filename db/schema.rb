@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_031601) do
+ActiveRecord::Schema.define(version: 2020_08_10_042400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2020_08_10_031601) do
     t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
+  create_table "appt_cuisines", force: :cascade do |t|
+    t.bigint "appointment_id", null: false
+    t.bigint "cuisine_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["appointment_id"], name: "index_appt_cuisines_on_appointment_id"
+    t.index ["cuisine_id"], name: "index_appt_cuisines_on_cuisine_id"
+  end
+
   create_table "appt_locations", force: :cascade do |t|
     t.bigint "location_id", null: false
     t.bigint "appointment_id", null: false
@@ -61,6 +70,12 @@ ActiveRecord::Schema.define(version: 2020_08_10_031601) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["appointment_id"], name: "index_appt_prices_on_appointment_id"
     t.index ["price_id"], name: "index_appt_prices_on_price_id"
+  end
+
+  create_table "cuisines", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "locations", force: :cascade do |t|
@@ -95,6 +110,8 @@ ActiveRecord::Schema.define(version: 2020_08_10_031601) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "appointments", "users"
+  add_foreign_key "appt_cuisines", "appointments"
+  add_foreign_key "appt_cuisines", "cuisines"
   add_foreign_key "appt_locations", "appointments"
   add_foreign_key "appt_locations", "locations"
   add_foreign_key "appt_prices", "appointments"

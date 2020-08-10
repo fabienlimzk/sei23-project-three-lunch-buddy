@@ -1,6 +1,9 @@
 class Appointment < ApplicationRecord
   belongs_to :user
 
+  has_many :appt_cuisines, dependent: :destroy
+  has_many :cuisines, through: :appt_cuisines, dependent: :destroy
+
   has_many :appt_prices, dependent: :destroy
   has_many :prices, through: :appt_prices, dependent: :destroy
 
@@ -10,6 +13,28 @@ class Appointment < ApplicationRecord
   validates :content, presence: true, length: { minimum: 8}
   validates :location_selects, presence: true
   validates :price_selects, presence: true
+  validates :cuisine_selects, presence: true
+
+  def cuisine_selects
+    cuisines.join(", ")
+  end
+
+  def cuisine_selects=(cuisines_array)
+    no_empty_string = cuisines_array.reject { |c| c.empty? }
+    cuisine_parse = no_empty_string.collect{|s| s.strip.downcase}.uniq
+    new_or_found_cuisines = cuisine_parse.collect { |name| Cuisine.find_or_create_by(name: name) }
+    self.cuisines += new_or_found_cuisines
+  end
+
+  def cuisine_list
+    cuisines.join(", ")
+  end
+
+  def cuisine_list=(cuisines_string)
+    cuisine_names = cuisines_string.split(",").collect{|s| s.strip.downcase}.uniq
+    new_or_found_cuisines = cuisine_names.collect { |name| Cuisine.find_or_create_by(name: name) }
+    self.cuisines += new_or_found_cuisines
+  end
 
   def price_selects
     prices.join(", ")

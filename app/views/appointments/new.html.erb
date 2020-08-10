@@ -20,12 +20,19 @@
     <%= f.collection_select(:price_selects, Price.all, :name, :name, {:prompt => "Choose Price range"},{:multiple => true, :required => true}) %>
   </div>
   <div>
+    <%= f.collection_select(:cuisine_selects, Cuisine.all, :name, :name, {:prompt => "Choose Cuisine(s)"},{:multiple => true, :required => true}) %>
+  </div>
+  <div>
     <%= f.collection_select(:location_selects, Location.all, :name, :name, {:prompt => "Choose Location(s)"},{:multiple => true, :required => true}) %>
   </div>
   <% if @user.isAdmin %>
     <div>
       <%= f.label :price_list %><br />
       <%= f.text_field :price_list %>
+    </div>
+     <div>
+      <%= f.label :cuisine_list %><br />
+      <%= f.text_field :cuisine_list %>
     </div>
     <div>
       <%= f.label :location_list %><br />
