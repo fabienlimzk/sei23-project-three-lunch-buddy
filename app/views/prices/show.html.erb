@@ -1,0 +1,7 @@
+<h1>Appointments Tagged with <%= @price.name %></h1>
+
+<ul>
+  <% @price.appointments.each do |appointment| %>
+    <li><%= link_to appointment.content, appointment_path(appointment) %></li>
+  <% end %>
+</ul>
