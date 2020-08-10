@@ -8,8 +8,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :lastname, null: false
       t.string :username, null: false
       t.string :phone, null: false
-      t.bigint :reputation, null: false
-      t.boolean :isAdmin, null: false
+      t.bigint :reputation, null: false, default: 3
+      t.boolean :isAdmin, null: false, default: false
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
 
