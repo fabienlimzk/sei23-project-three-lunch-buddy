@@ -1,5 +1,6 @@
 class Appointment < ApplicationRecord
-  belongs_to :user
+  belongs_to :poster, :class_name => 'User'
+  belongs_to :respondent, :class_name => 'User', optional: true
 
   has_many :appt_cuisines, dependent: :destroy
   has_many :cuisines, through: :appt_cuisines, dependent: :destroy

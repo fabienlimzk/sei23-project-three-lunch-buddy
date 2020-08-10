@@ -12,7 +12,7 @@ class AppointmentsController < ApplicationController
 
   def create
     @user = User.find(current_user.id)
-    @appointment = @user.appointments.build(appointment_params)
+    @appointment = @user.appointments_posted.build(appointment_params)
 
     if @appointment.save
       redirect_to user_appointments_path(current_user.id)
@@ -33,6 +33,6 @@ class AppointmentsController < ApplicationController
   private 
 
   def appointment_params
-    params.require(:appointment).permit(:content, :status, :user_id, :location_list, :cuisine_list, :price_list, price_selects: [], location_selects: [], cuisine_selects: [])
+    params.require(:appointment).permit(:content, :status, :poster_id, :location_list, :cuisine_list, :price_list, price_selects: [], location_selects: [], cuisine_selects: [])
   end
 end
