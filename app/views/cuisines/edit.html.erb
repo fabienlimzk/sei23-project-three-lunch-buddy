@@ -1,2 +1,11 @@
-<h1>Cuisines#edit</h1>
-<p>Find me in app/views/cuisines/edit.html.erb</p>
+<div class=“container”>
+<%= form_for @cuisine do |f| %>
+  <div class=“form-row”>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+  </div>
+  <div class=“form-row”>
+    <%= f.submit "Save" %>
+  </div>
+<% end %>
+</div>
