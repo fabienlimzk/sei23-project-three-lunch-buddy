@@ -1,8 +1,4 @@
 class Appointment < ApplicationRecord
- require 'action_view'
- require 'action_view/helpers'
- include ActionView::Helpers::DateHelper
-
   belongs_to :poster, :class_name => 'User'
   belongs_to :respondent, :class_name => 'User', optional: true
 
@@ -34,13 +30,12 @@ class Appointment < ApplicationRecord
   end
  end
 
-private
-def min_event_duration
-  return if end_time.blank? || start_time.blank?
+  private
+  def min_event_duration
+    return if end_time.blank? || start_time.blank?
 
-  if end_time < start_time + 45.minutes
-    errors.add(:appointment, "must end at least 45 mins after start time")
+    if end_time < start_time + 45.minutes
+      errors.add(:appointment, "must end at least 45 mins after start time")
+    end
   end
-end
-
 end
