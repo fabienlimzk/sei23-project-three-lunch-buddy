@@ -1,8 +1,4 @@
 class Appointment < ApplicationRecord
- require 'action_view'
- require 'action_view/helpers'
- include ActionView::Helpers::DateHelper
-
   belongs_to :poster, :class_name => 'User'
   belongs_to :respondent, :class_name => 'User', optional: true
 
@@ -26,7 +22,6 @@ class Appointment < ApplicationRecord
   validate :min_event_duration
 
  def happening
-  # if self.end_time.strftime('%a, %d %b %Y %H:%M:%S') < Time.now || self.start_time < Time.now || self.status == 'booked'
   current_time = Time.now.strftime('%H:%M:%S')
   if ((self.end_time.today? || self.end_time.past?) && self.end_time.strftime('%H:%M:%S') < current_time) || (self.start_time.past? || (self.start_time.today? && self.start_time.strftime('%H:%M:%S') < current_time)) || (self.status == 'booked')
     "closed"
@@ -35,13 +30,12 @@ class Appointment < ApplicationRecord
   end
  end
 
-private
-def min_event_duration
-  return if end_time.blank? || start_time.blank?
+  private
+  def min_event_duration
+    return if end_time.blank? || start_time.blank?
 
-  if end_time < start_time + 45.minutes
-    errors.add(:appointment, "must end at least 45 mins after start time")
+    if end_time < start_time + 45.minutes
+      errors.add(:appointment, "must end at least 45 mins after start time")
+    end
   end
-end
-
 end
