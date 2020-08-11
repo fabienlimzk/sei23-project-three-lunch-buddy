@@ -5,7 +5,7 @@
     <div class="border col-3 p-2 mx-1 text-center">
         <p><b><%= a.poster.username %></b> is looking for a lunch buddy!</p>
         <p>"<%= a.title %>"</p>
-        <p><%# a.status %></p>
+        <p><%= a.status %></p>
         <p>Start: <%= l a.start_time %></p>
         <p>End: <%= l a.end_time %></p>
 
@@ -27,6 +27,8 @@
         <div class="mx-auto">
           <%= link_to "Details", appointment_path(a), class: "btn btn-sm btn-info" %>
           <button class="btn btn-success btn-sm">Accept Invitation</button>
+          <%= link_to "Edit", edit_appointment_url(a), class: "btn btn-sm btn-warning" %>
+          <%= link_to "Delete", appointment_path(a), method: "DELETE", data:{ confirm: "Confirm?"}, class: "btn btn-sm btn-danger" %>
         </div>
     </div>
   <% end %>
