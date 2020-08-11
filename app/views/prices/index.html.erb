@@ -1,5 +1,5 @@
 <h1 class="text-center">All price ranges</h1>
-  <% if @user.isAdmin %>
+  <% if current_user.isAdmin %>
     <div class="form-group mt-3 text-left">
     <%= form_for @price do |f| %>
       <%= f.label :name, "Add price range" %>
