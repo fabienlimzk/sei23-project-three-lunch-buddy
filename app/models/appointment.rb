@@ -26,18 +26,18 @@ class Appointment < ApplicationRecord
     no_empty_string = cuisines_array.reject { |c| c.empty? }
     cuisine_parse = no_empty_string.collect{|s| s.strip.downcase}.uniq
     new_or_found_cuisines = cuisine_parse.collect { |name| Cuisine.find_or_create_by(name: name) }
-    self.cuisines += new_or_found_cuisines
+    self.cuisines = new_or_found_cuisines
   end
 
-  def cuisine_list
-    cuisines.join(", ")
-  end
+  # def cuisine_list
+  #   cuisines.join(", ")
+  # end
 
-  def cuisine_list=(cuisines_string)
-    cuisine_names = cuisines_string.split(",").collect{|s| s.strip.downcase}.uniq
-    new_or_found_cuisines = cuisine_names.collect { |name| Cuisine.find_or_create_by(name: name) }
-    self.cuisines += new_or_found_cuisines
-  end
+  # def cuisine_list=(cuisines_string)
+  #   cuisine_names = cuisines_string.split(",").collect{|s| s.strip.downcase}.uniq
+  #   new_or_found_cuisines = cuisine_names.collect { |name| Cuisine.find_or_create_by(name: name) }
+  #   self.cuisines += new_or_found_cuisines
+  # end
 
   def price_selects
     prices.join(", ")
@@ -47,18 +47,18 @@ class Appointment < ApplicationRecord
     no_empty_string = prices_array.reject { |p| p.empty? }
     price_parse = no_empty_string.collect{|s| s.strip.downcase}.uniq
     new_or_found_prices = price_parse.collect { |name| Price.find_or_create_by(name: name) }
-    self.prices += new_or_found_prices
+    self.prices = new_or_found_prices
   end
 
-  def price_list
-    prices.join(", ")
-  end
+  # def price_list
+  #   prices.join(", ")
+  # end
 
-  def price_list=(prices_string)
-    price_names = prices_string.split(",").collect{|s| s.strip.downcase}.uniq
-    new_or_found_prices = price_names.collect { |name| Price.find_or_create_by(name: name) }
-    self.prices += new_or_found_prices
-  end
+  # def price_list=(prices_string)
+  #   price_names = prices_string.split(",").collect{|s| s.strip.downcase}.uniq
+  #   new_or_found_prices = price_names.collect { |name| Price.find_or_create_by(name: name) }
+  #   self.prices += new_or_found_prices
+  # end
 
   def location_selects
     locations.join(", ")
@@ -68,17 +68,17 @@ class Appointment < ApplicationRecord
     no_empty_string = locations_array.reject { |l| l.empty? }
     location_parse = no_empty_string.collect{|s| s.strip.downcase}.uniq
     new_or_found_locations = location_parse.collect { |name| Location.find_or_create_by(name: name) }
-    self.locations += new_or_found_locations
+    self.locations = new_or_found_locations
   end
 
-  def location_list
-    locations.join(", ")
-  end
+  # def location_list
+  #   locations.join(", ")
+  # end
 
-  def location_list=(locations_string)
-    location_names = locations_string.split(",").collect{|s| s.strip.downcase}.uniq
-    new_or_found_locations = location_names.collect { |name| Location.find_or_create_by(name: name) }
-    self.locations += new_or_found_locations
-  end
+  # def location_list=(locations_string)
+  #   location_names = locations_string.split(",").collect{|s| s.strip.downcase}.uniq
+  #   new_or_found_locations = location_names.collect { |name| Location.find_or_create_by(name: name) }
+  #   self.locations += new_or_found_locations
+  # end
 
 end
