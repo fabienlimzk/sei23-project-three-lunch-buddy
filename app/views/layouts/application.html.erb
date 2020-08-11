@@ -57,14 +57,14 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end%>
   <%# END FLASH MESSAGES %>
-  <div class="container">
+  <div class="container wrapper">
     <%= yield %>
   </div>
   </body>
 
-  <footer class="page-footer mt-5">
-    <div class="footer-copyright text-center py-4">
-      <p>© 2020 Chonky</p>
+  <footer class="page-footer">
+    <div class="footer-copyright text-center py-2">
+      <span class="copyright">© 2020 Chonky</span>
       <%= link_to "https://github.com/fabienlimzk/lunch-buddy" do %>
         <%= fa_icon "github" %>
       <% end %>
