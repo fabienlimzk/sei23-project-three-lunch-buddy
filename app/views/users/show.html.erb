@@ -23,7 +23,7 @@
         
         <div class="mx-auto">
           <%= link_to "Details", appointment_path(a), class: "btn btn-sm btn-info" %>
-          <button class="btn btn-success btn-sm">Accept Invitation</button>
+          <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
           <%= link_to "Edit", edit_appointment_url(a), class: "btn btn-sm btn-warning" %>
           <%= link_to "Delete", appointment_path(a), method: "DELETE", data:{ confirm: "Confirm?"}, class: "btn btn-sm btn-danger" %>
         </div>
