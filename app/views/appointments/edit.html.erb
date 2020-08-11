@@ -1,2 +1,41 @@
-<h1>Appointments#edit</h1>
-<p>Find me in app/views/appointments/edit.html.erb</p>
+<h1 class="text-center">Looking for a lunch buddy?</h1>
+<div class="card mx-auto col-7 shadow p-3 mb-5 bg-white rounded text-center">
+<% if @appointment.errors.any? %>
+  <%= pluralize(@appointment.errors.count, "error") %>
+    <% @appointment.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger"> <%= message %> </div>
+    <% end %>
+<% end %>
+
+<h4 class="text-left">Edit a new lunch appointment</h4>
+<%= form_for [@user, @appointment] do |f| %>
+  <div class="form-group mt-3 text-left">
+    <%= f.text_field :title, placeholder: "Lunch Buddy needed!", class: "form-control" %>
+  </div>
+  <div class="form-row mt-3 mx-auto">
+    <%= f.text_area :content, placeholder: "Looking for a lunch buddy around MBFC or Marina One area :)", :rows => 4, style: 'width:100%; margin:auto' %>
+  </div>
+
+  <div class="form-row mt-3 mx-auto">
+    Start: <%= datetime_field(:appointment, :start_time) %>
+  </div>
+
+    <div class="form-row mt-3 mx-auto">
+    End: <%= datetime_field(:appointment, :end_time) %>
+  </div>
+
+  <div class="form-row mt-3">
+    <%= f.collection_select(:cuisine_ids, Cuisine.all, :id, :name, {:prompt => "Choose Cuisine(s)"},{:multiple => true, :required => true, :class => "custom-select"}) %>
+  </div>
+  <div class="form-row mt-3">
+    <%= f.collection_select(:location_ids, Location.all, :id, :name, {:prompt => "Choose Location(s)"},{:multiple => true, :required => true, :class => "custom-select"}) %>
+  </div>
+  <div class="form-row mt-3">
+    <%= f.collection_select(:price_ids, Price.all, :id, :name, {:prompt => "Choose Price range"},{:multiple => true, :required => true, :class => "custom-select"}) %>
+  </div>
+
+  <div class=“form-row”>
+    <%= f.submit "Edit appointment", class: "btn btn-success mt-3" %>
+  </div>
+<% end %>
+</div>
