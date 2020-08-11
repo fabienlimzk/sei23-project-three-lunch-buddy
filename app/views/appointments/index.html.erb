@@ -23,7 +23,9 @@
 
         <div class="mx-auto">
           <%= link_to "Details", appointment_path(a), class: "btn btn-sm btn-info" %>
+          <% if current_user.id != a.poster.id %>
           <button class="btn btn-success btn-sm">Accept Invitation</button>
+          <% end %>
         </div>
     </div>
   <% end %>

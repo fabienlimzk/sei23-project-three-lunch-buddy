@@ -35,7 +35,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
     
     if @appointment.update(appointment_params)
-      redirect_to user_appointments_path(current_user.id)
+      redirect_to user_path(current_user.id)
     else
       render :edit
     end
@@ -44,13 +44,13 @@ class AppointmentsController < ApplicationController
   def destroy
     @appointment = Appointment.find(params[:id]).destroy   
     if @appointment.destroy
-      redirect_to user_appointments_path(current_user.id)
+      redirect_to user_path(current_user.id)
     end
   end
 
   private 
 
   def appointment_params
-    params.require(:appointment).permit(:title, :start_time, :end_time, :content, :poster_id, price_selects: [], location_selects: [], cuisine_selects: [])
+    params.require(:appointment).permit(:title, :start_time, :end_time, :content, :poster_id, price_ids: [], location_ids: [], cuisine_ids: [])
   end
 end

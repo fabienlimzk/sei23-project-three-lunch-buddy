@@ -18,8 +18,10 @@
     <span><%= link_to p.name, price_path(p), class: "badge badge-price" %></span>
   <% end %>
 </div>
-
+  
   <div class="mx-auto">
+    <% if current_user.id != @appointment.poster.id %>
     <button class="btn btn-success btn-sm">Accept Invitation</button>
+    <% end %>  
   </div>
 </div>
