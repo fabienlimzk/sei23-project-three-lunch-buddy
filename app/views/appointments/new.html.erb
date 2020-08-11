@@ -25,30 +25,14 @@
   </div>
 
   <div class="form-row mt-3">
-    <%= f.collection_select(:cuisine_selects, Cuisine.all, :name, :name, {:prompt => "Choose Cuisine(s)"},{:multiple => true, :required => true, :class => "custom-select"}) %>
+    <%= f.collection_select(:cuisine_ids, Cuisine.all, :id, :name, {:prompt => "Choose Cuisine(s)"},{:multiple => true, :required => true, :class => "custom-select"}) %>
   </div>
   <div class="form-row mt-3">
-    <%= f.collection_select(:location_selects, Location.all, :name, :name, {:prompt => "Choose Location(s)"},{:multiple => true, :required => true, :class => "custom-select"}) %>
+    <%= f.collection_select(:location_ids, Location.all, :id, :name, {:prompt => "Choose Location(s)"},{:multiple => true, :required => true, :class => "custom-select"}) %>
   </div>
   <div class="form-row mt-3">
-    <%= f.collection_select(:price_selects, Price.all, :name, :name, {:prompt => "Choose Price range"},{:multiple => true, :required => true, :class => "custom-select"}) %>
+    <%= f.collection_select(:price_ids, Price.all, :id, :name, {:prompt => "Choose Price range"},{:multiple => true, :required => true, :class => "custom-select"}) %>
   </div>
-  
-  <% if @user.isAdmin %>
-    <div class="form-group mt-3 text-left">
-      <%= f.label :cuisine_list, "Add cuisine" %>
-      <%= f.text_field :cuisine_list, class: "form-control" %>
-    </div>
-    <div class="form-group mt-3 text-left">
-      <%= f.label :location_list, "Add location" %>
-      <%= f.text_field :location_list, class: "form-control" %>
-    </div>
-    <div class="form-group mt-3 text-left">
-      <%= f.label :price_list , "Add price range" %>
-      <%= f.text_field :price_list, class: "form-control" %>
-    </div>
-  <% end %>
-
 
   <div class=“form-row”>
     <%= f.submit "Create appointment", class: "btn btn-success mt-3" %>

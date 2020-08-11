@@ -1,5 +1,15 @@
 <h1 class="text-center">All price ranges</h1>
-
+  <% if current_user.isAdmin %>
+    <div class="form-group mt-3 text-left">
+    <%= form_for @price do |f| %>
+      <%= f.label :name, "Add price range" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group mt-3 text-left">
+     <%= f.submit "Save", class: "btn btn-success mt-3" %>
+    </div>
+    <% end %>
+  <% end %>
 <div class="row d-flex flex-wrap">
 <% @prices.each do |price| %>
   <div class="border col-3 p-2 mx-1 text-center">
