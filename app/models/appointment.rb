@@ -17,4 +17,14 @@ class Appointment < ApplicationRecord
   validates :location_ids, presence: true
   validates :price_ids, presence: true
   validates :cuisine_ids, presence: true
+  validate :min_event_duration
+
+  private
+  def min_event_duration
+    return if end_time.blank? || start_time.blank?
+
+    if end_time < start_time + 45.minutes
+      errors.add(:appointment, "must end at least 45 mins after start time")
+    end
+  end
 end
