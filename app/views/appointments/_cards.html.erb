@@ -1,6 +1,7 @@
 <div class="row d-flex flex-wrap mx-auto justify-content-between">
 
   <% @appointments.reverse.each do |a| %>
+    <%# if a.happening == 'open' %>
     <div class="appt-card card mx-auto mb-4 p-2 text-left d-flex flex-column justify-content-between">
       <div class="appt-tags text-left">
       <%= fa_icon "tags" %>
@@ -24,9 +25,9 @@
       </div>
       <hr class="my-1">
       <div class="appt-time d-flex">
-        <div class=""><span class="time-label">Starts</span> <p><%= l a.start_time %></p></div>
+        <div class=""><span class="time-label">Starts</span> <p><%= a.start_time.strftime('%a, %d %b %Y at %I:%M %p')%></p></div>
         <div class="time-vertical-div px-2"><%= fa_icon "arrow-circle-right" %></div>
-        <div><span class="time-label">Ends</span> <p><%= l a.end_time %></p></div>
+        <div><span class="time-label">Ends</span> <p><%= a.end_time.strftime('%a, %d %b %Y at %I:%M %p') %></p></div>
       </div>
       <hr class="my-1">
       <div class="appt-btns text-center">
@@ -61,5 +62,6 @@
         <button class="btn btn-success btn-sm">Accept Invitation</button>
       </div>
     </div>
+   <%# end %>
   <% end %>
 </div>
