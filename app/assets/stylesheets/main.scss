@@ -11,26 +11,58 @@ $bright-orange: rgb(243, 123, 44);
 $mandarin-orange: rgb(251, 163, 51);
 $navy: rgb(53, 55, 68);
 
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+@import "font-awesome";
 
 body {
   font-family: 'Roboto', Helvetica, sans-serif, sans-serif;
   font-size: 82%;
+  background-color: white;
 }
 
 h1 {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: lowercase;
+  padding-bottom: .8rem;
+}
+
+.navbar {
+  background-color: $navy;
 }
 
 .navbar-brand {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  line-height: 0;
 }
 
 .nav-logo {
-  width: 45px;
-  margin-right: 2%;
+  width: 50px;
+  padding: 2px;
+  border-radius: 50%;
+  background-color: $steel-blue;
+}
+
+.appt-card {
+  width: 320px;
+  min-height: 290px;
+  border-top: 6px solid $navy;
+}
+
+.appt-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.time-label {
+  font-size: .65rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.appt-time {
+  font-size: .7rem;
 }
 
 .badge-location, .badge-location a {
@@ -58,5 +90,9 @@ h1 {
     background-color: rgba(94, 92, 92, 0.562);
     color: white;
   }
+}
+
+.time-vertical-div {
+  align-self: center;
 }
 
