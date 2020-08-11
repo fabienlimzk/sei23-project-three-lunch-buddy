@@ -1,5 +1,18 @@
 <h1 class="text-center">Your Profile/Appointments</h1>
 
+<%= image_tag(current_user.avatar_thumbnail, :class => "border border-dark rounded-circle") %>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <br />
+      <h4><p><strong><%= @user.username %></strong></p></h4>
+      <h6><p>Firstname: <%= @user.firstname %></p></h6>
+      <h6><p>Lastname: <%= @user.lastname %></p></h6>
+      <h6><p>Admin Status: <%= @user.isAdmin %></p></h6>
+    </div>  
+  </div>
+</div>
+
 <div class="row d-flex flex-wrap">
   <% @appointments.reverse.each do |a| %>
     <div class="border col-3 p-2 mx-1 text-center">
@@ -29,9 +42,12 @@
       
       <div class="mx-auto">
         <%= link_to "Details", appointment_path(a), class: "btn btn-sm btn-info" %>
-        <% if current_user.id != a.poster.id %>
-        <button class="btn btn-success btn-sm">Accept Invitation</button>
-        <% end %>
+        <% if current_user.id != a.poster.id && a.status != "booked" %>
+        <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
+        <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
+        <% else %>
+        <p>Someone already accepted this invitation/You cannot accept your own invitation</p>
+        <% end %>  
       </div>
     </div>
   <% end %>

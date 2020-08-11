@@ -48,6 +48,16 @@ class AppointmentsController < ApplicationController
     end
   end
 
+  def accept
+    @user = User.find(current_user.id)
+    @appointment = Appointment.find(params[:id])
+    @appointment.status = "booked"
+    @appointment.respondent_id = current_user.id
+    if @appointment.save
+      redirect_to user_appointments_path(current_user.id)
+    end  
+  end
+
   private 
   def appointment_params
     params.require(:appointment).permit(:title, :start_time, :end_time, :content, :poster_id, price_ids: [], location_ids: [], cuisine_ids: [])

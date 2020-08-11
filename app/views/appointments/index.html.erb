@@ -3,7 +3,7 @@
 <div class="row d-flex flex-wrap mx-auto justify-content-between">
 
   <% @appointments.reverse.each do |a| %>
-    <% @appointments.reverse.each do |a| %>
+      <% if a.happening == 'open' %>
     <div class="appt-card card mx-auto mb-4 p-2 text-left d-flex flex-column justify-content-between">
       <div class="appt-tags text-left">
       <%= fa_icon "tags" %>
