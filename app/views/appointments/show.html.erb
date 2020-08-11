@@ -7,26 +7,17 @@
   <p>Start: <%= l @appointment.start_time %></p>
   <p>End: <%= l @appointment.end_time %></p>
 
-  <div class="text-left">
-    Location(s): 
-    <% @appointment.locations.each do |l| %>
-      <span><%= link_to l.name, location_path(l) %></span>
-    <% end %>
-  </div>
-  
-  <div class="text-left">
-    Cuisine(s): 
+<div class="text-center mb-3">
+  <% @appointment.locations.each do |l| %>
+    <span><%= link_to l.name, location_path(l), class: "badge badge-location" %></span>
+  <% end %>
   <% @appointment.cuisines.each do |c| %>
-  <span><%= link_to c.name, cuisine_path(c) %></span>
+    <span><%= link_to c.name, cuisine_path(c), class: "badge badge-cuisine" %></span>
   <% end %>
-  </div>
-
-  <div class="text-left">
-    Price Range(s): 
   <% @appointment.prices.each do |p| %>
-  <span><%= link_to p.name, price_path(p) %></span>
+    <span><%= link_to p.name, price_path(p), class: "badge badge-price" %></span>
   <% end %>
-  </div>
+</div>
 
   <div class="mx-auto">
     <button class="btn btn-success btn-sm">Accept Invitation</button>

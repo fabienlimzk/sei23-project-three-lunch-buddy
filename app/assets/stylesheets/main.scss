@@ -1,0 +1,62 @@
+// COLORS
+$primary-orange: rgb(249, 153, 50);
+$primary-green: rgb(105, 158, 68);
+$red: rgb(213, 53, 44);
+$light-green: rgb(174, 188, 57);
+$pastel-orange: rgb(228, 171, 130);
+$steel-blue: rgb(212, 227, 227);
+$army-green: rgb(164, 165, 56);
+$coral: rgb(236, 140, 83);
+$bright-orange: rgb(243, 123, 44);
+$mandarin-orange: rgb(251, 163, 51);
+$navy: rgb(53, 55, 68);
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+body {
+  font-family: 'Roboto', Helvetica, sans-serif, sans-serif;
+  font-size: 82%;
+}
+
+h1 {
+  font-size: 1.8rem;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.nav-logo {
+  width: 45px;
+  margin-right: 2%;
+}
+
+.badge-location, .badge-location a {
+  background-color: $pastel-orange;
+  color: white;
+  &:hover {
+    background-color: rgba(94, 92, 92, 0.562);
+    color: white;
+  }
+}
+
+.badge-cuisine, .badge-cuisine a {
+  background-color: $light-green;
+  color: white;
+  &:hover {
+    background-color: rgba(94, 92, 92, 0.562);
+    color: white;
+  }
+}
+
+.badge-price, .badge-price a {
+  background-color: $red;
+  color: white;
+  &:hover {
+    background-color: rgba(94, 92, 92, 0.562);
+    color: white;
+  }
+}
+
