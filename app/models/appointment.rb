@@ -26,7 +26,6 @@ class Appointment < ApplicationRecord
   validate :min_event_duration
 
  def happening
-  # if self.end_time.strftime('%a, %d %b %Y %H:%M:%S') < Time.now || self.start_time < Time.now || self.status == 'booked'
   current_time = Time.now.strftime('%H:%M:%S')
   if ((self.end_time.today? || self.end_time.past?) && self.end_time.strftime('%H:%M:%S') < current_time) || (self.start_time.past? || (self.start_time.today? && self.start_time.strftime('%H:%M:%S') < current_time)) || (self.status == 'booked')
     "closed"
