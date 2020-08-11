@@ -9,6 +9,20 @@ class PricesController < ApplicationController
     @price = Price.find(params[:id])
   end
 
+
+  def new
+    @price = Price.new
+  end
+
+  def create
+    @price = Price.new(price_params)
+    if @price.save
+      redirect_to prices_path
+    else
+      render :new
+    end
+  end
+
   def edit 
     @price = Price.find(params[:id])
   end
