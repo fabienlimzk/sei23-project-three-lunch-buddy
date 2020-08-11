@@ -223,7 +223,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   devise
-  font-awesome-rails
+  font-awesome-rails (~> 4.7.0.5)
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
   listen (~> 3.2)

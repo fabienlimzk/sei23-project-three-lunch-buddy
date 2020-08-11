@@ -26,7 +26,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 
 #fontawesome
-gem "font-awesome-rails"
+gem "font-awesome-rails", '~> 4.7.0.5'
 
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
