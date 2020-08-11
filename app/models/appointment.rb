@@ -13,13 +13,14 @@ class Appointment < ApplicationRecord
   has_many :appt_locations, dependent: :destroy
   has_many :locations, through: :appt_locations, dependent: :destroy
 
-  validate :title, presence: true
+  validates :title, presence: true
   validates :content, presence: true, length: { minimum: 8 }
   validates :location_ids, presence: true
   validates :price_ids, presence: true
   validates :cuisine_ids, presence: true
   validates :start_time, :end_time, :presence => true
   validate :min_event_duration
+
 
   private
   def min_event_duration
