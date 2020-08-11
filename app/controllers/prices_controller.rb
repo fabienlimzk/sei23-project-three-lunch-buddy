@@ -2,11 +2,26 @@ class PricesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @price = Price.new
     @prices = Price.all
   end
 
   def show
     @price = Price.find(params[:id])
+  end
+
+
+  def new
+    @price = Price.new
+  end
+
+  def create
+    @price = Price.new(price_params)
+    if @price.save
+      redirect_to prices_path
+    else
+      render :new
+    end
   end
 
   def edit 
