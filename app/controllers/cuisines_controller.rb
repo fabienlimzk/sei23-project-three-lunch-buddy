@@ -2,6 +2,7 @@ class CuisinesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @cuisine = Cuisine.new
     @cuisines = Cuisine.all
   end
 

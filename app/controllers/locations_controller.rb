@@ -2,6 +2,7 @@ class LocationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @location = Location.new
     @locations = Location.all
   end
 

@@ -2,6 +2,7 @@ class PricesController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @price = Price.new
     @prices = Price.all
   end
 
