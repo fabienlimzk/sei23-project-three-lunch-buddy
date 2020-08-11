@@ -4,19 +4,19 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class "form-group">
-        <div class="row">
-          <div class="col-sm-4">
-            <% if resource.avatar.attached? %>
-              <%= image_tag(resource.avatar_thumbnail, :class => "rounded-circle") %>
-            <% else %>
-              <%= image_tag("default_profile.png", :class => "rounded-circle") %>
-            <% end %>
-          </div>
-
-          <div class="col-sm-8">
-            <%= f.file_field :avatar %>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <% if resource.avatar.attached? %>
+          <%= image_tag(resource.avatar_thumbnail, :class => "rounded-circle") %>
+        <% else %>
+          <%= image_tag("default_profile.png", :class => "rounded-circle") %>
+        <% end %>
+      </div>        
+    </div>
+  </div>
+  
+  <div>
+    <%= f.file_field :avatar %>
   </div>
 
   <div class="field">
