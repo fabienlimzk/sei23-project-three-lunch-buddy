@@ -7,16 +7,19 @@
 
 <div class="field">
     <% if resource.avatar.attached? %>
-      <%= image_tag(resource.avatar_thumbnail, :class => "rounded-circle") %>
+      <%= image_tag(resource.avatar_thumbnail, :class => "border border-dark rounded-circle") %>
     <% else %>
-      <%= image_tag("default_profile.png", :class => "rounded-circle") %>
+      <%= image_tag("default_profile.png", :class => "border border-dark rounded-circle") %>
     <% end %>
-  
-    <%= f.file_field :avatar %>
+    
+    
     
 </div>
+<br />
+<%= f.file_field :avatar %>
 
 <div class="field">
+<br />
     <%= f.label :firstname %><br />
     <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
   </div>
