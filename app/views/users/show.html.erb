@@ -9,19 +9,16 @@
         <p>Start: <%= l a.start_time %></p>
         <p>End: <%= l a.end_time %></p>
 
-        <div class="text-left">
-          Location(s): 
-          <%= a.locations.map { |l| link_to l.name, location_path(l) }.join(',').html_safe %>
-        </div>
-  
-        <div class="text-left">
-          Cuisine(s): 
-          <%= a.cuisines.map { |c| link_to c.name, cuisine_path(c) }.join(',').html_safe %>
-        </div>
-
-        <div class="text-left">
-          Price Range(s): 
-          <%= a.prices.map { |p| link_to p.name, price_path(p) }.join(',').html_safe %>
+        <div class="text-center mb-3">
+          <% a.locations.each do |l| %>
+            <span><%= link_to l.name, location_path(l), class: "badge badge-location" %></span>
+          <% end %>
+          <% a.cuisines.each do |c| %>
+            <span><%= link_to c.name, cuisine_path(c), class: "badge badge-cuisine" %></span>
+          <% end %>
+          <% a.prices.each do |p| %>
+            <span><%= link_to p.name, price_path(p), class: "badge badge-price" %></span>
+          <% end %>
         </div>
         
         <div class="mx-auto">
