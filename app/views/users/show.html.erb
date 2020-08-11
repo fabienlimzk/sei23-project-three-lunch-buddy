@@ -42,9 +42,12 @@
       
       <div class="mx-auto">
         <%= link_to "Details", appointment_path(a), class: "btn btn-sm btn-info" %>
-        <% if current_user.id != a.poster.id %>
-        <button class="btn btn-success btn-sm">Accept Invitation</button>
-        <% end %>
+        <% if current_user.id != a.poster.id && a.status != "booked" %>
+        <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
+        <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
+        <% else %>
+        <p>Someone already accepted this invitation/You cannot accept your own invitation</p>
+        <% end %>  
       </div>
     </div>
   <% end %>

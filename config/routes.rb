@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
 
+  put '/appointments/:id/accept', to: 'appointments#accept', as: "accept"
+
   resources :appointments
   
   resources :users do
