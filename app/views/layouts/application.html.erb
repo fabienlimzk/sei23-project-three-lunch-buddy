@@ -6,6 +6,8 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500&display=swap', media: 'all', 'data-turbolinks-track' => true %>
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -59,4 +61,14 @@
     <%= yield %>
   </div>
   </body>
+
+  <footer class="page-footer mt-5">
+    <div class="footer-copyright text-center py-3">
+      <p>© 2020 Chonky</p>
+      <%= link_to "https://github.com/fabienlimzk/lunch-buddy" do %>
+        <%= fa_icon "github" %>
+      <% end %>
+
+    </div>
+  </footer>
 </html>
