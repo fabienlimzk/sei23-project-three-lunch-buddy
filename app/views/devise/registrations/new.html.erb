@@ -11,6 +11,10 @@
     <% else %>
       <%= image_tag("default_profile.png") %>
     <% end %>
+
+    <div class="col-sm-8">
+      <%= f.file_field :avatar %>
+    </div>
 </div>
 
 <div class="field">
