@@ -20,8 +20,11 @@
 </div>
   
   <div class="mx-auto">
-    <% if current_user.id != @appointment.poster.id %>
-    <button class="btn btn-success btn-sm">Accept Invitation</button>
+    <% if current_user.id != @appointment.poster.id && @appointment.status != "booked" %>
+    <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
+    <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
+    <% else %>
+    <p>Someone already accepted this invitation/You cannot accept your own invitation</p>
     <% end %>  
   </div>
 </div>
