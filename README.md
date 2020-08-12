@@ -1,31 +1,32 @@
-# README
+# Lunch Buddy
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Technologies Used
+* Front end: HTML, CSS, Bootstrap, SASS
+* Back end: Ruby on Rails, PostgreSQL
+* Gems: Devise, Font Awesome
 
-Things you may want to cover:
+## Description
+Created to help people feel less lonely when lunch time rolls around!
 
-* Ruby version
+## User Stories
+* As a user, I want to be able to look for lunch partners in my area by creating and posting an open lunch appointment
+* As a user, I want to be able to specify my lunch budget and cuisine preferences when creating and posting a lunch appointment
+* As a user, I want to be able to browse open lunch appointments by time, location, cuisine and price range and accept lunch invitations
+* As a user, I want to be able to delete and edit my posted lunch appointments
+* As a user, I want to be able to view and edit avatar and my posted/accepted lunch appointments on my profile page
+* As an admin, I want to be able to add/edit/delete existing tags so that I can maintain/wrangle tags for a better user experience
 
-* System dependencies
+## Screenshots
 
-* Configuration
+## Installation instructions
 
-* Database creation
+## Models
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<img src="https://i.imgur.com/h0Jc21X.png" />
 
 ## Wireframes 
 
-https://wireframe.cc/pro/edit/364416
+View wireframes: https://wireframe.cc/pro/edit/364416
 
 ### Home/Landing Page
 
@@ -46,3 +47,5 @@ https://wireframe.cc/pro/edit/364416
 ### New Appointment Page
 
 <img src="https://i.postimg.cc/KzVgd480/New-Appointment.png" />
+
+## Resources
