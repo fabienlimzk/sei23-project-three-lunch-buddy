@@ -17,7 +17,7 @@
   
   <%# START NAVBAR %>
     <nav class="navbar navbar-default navbar-expand-lg navbar-dark">
-    <div class="container">
+    <div class="container-fluid">
     <%= image_tag "lunch-bag.png", class: "nav-logo navbar-brand" %>
     <%= link_to "lunch buddy", appointments_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,13 +56,14 @@
   <%# END NAVBAR %>
   <%# START FLASH MESSAGES %>
     <% if notice %>
-      <p class="notice alert alert-success"><%= notice %></p>
+      <div class="notice alert alert-success mb-0"><%= notice %></div>
     <% end %>
     <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
+      <div class="alert alert-danger mb-0"><%= alert %></div>
     <% end%>
   <%# END FLASH MESSAGES %>
     <%= yield %>
+
   </body>
 
   <footer class="page-footer">
