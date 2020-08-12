@@ -64,7 +64,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
     @poster = User.find(@appointment.poster_id)
     @respondent = User.find(@appointment.respondent_id)
-    if @user.id == @poster
+    if @user.id == @poster.id
       @respondent.reputation += 1
       @appointment.poster_has_reviewed = true
         if @respondent.save && @appointment.save
@@ -88,7 +88,7 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.find(params[:id])
     @poster = User.find(@appointment.poster_id)
     @respondent = User.find(@appointment.respondent_id)
-    if @user.id == @poster
+    if @user.id == @poster.id
       @respondent.reputation -= 1
       @appointment.poster_has_reviewed = true
         if @respondent.save && @appointment.save

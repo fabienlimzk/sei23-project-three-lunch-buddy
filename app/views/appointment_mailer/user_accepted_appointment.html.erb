@@ -5,7 +5,7 @@
 <p><strong><%= @appointment.title %> <%= link_to "View appointment", appointment_url(@appointment), target: :_blank %></strong></p>
 <p><%= @appointment.content %></p>
 <p>Start time: <%= @appointment.start_time.strftime('%a, %d %b %Y at %I:%M %p') %></p>
-<p>End time: <%= @appointment.start_time.strftime('%a, %d %b %Y at %I:%M %p') %></p><br>
+<p>End time: <%= @appointment.end_time.strftime('%a, %d %b %Y at %I:%M %p') %></p><br>
 
 
 <p>Enjoy lunch!</p>
