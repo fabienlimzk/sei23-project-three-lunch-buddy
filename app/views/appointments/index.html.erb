@@ -1,8 +1,7 @@
 <h1 class="text-center">Available lunch buddies</h1>
-
 <div class="row d-flex flex-wrap mx-auto justify-content-between">
-
   <% @appointments.reverse.each do |a| %>
+      <% if a.happening == 'open' %>
     <div class="appt-card card mx-auto mb-4 p-2 text-left d-flex flex-column justify-content-between">
       <div class="appt-tags text-left">
       <%= fa_icon "tags" %>
@@ -17,7 +16,6 @@
         <% end %>
       </div>
       <hr class="my-1">
-
       <div class="appt-header">
         <p><%= fa_icon "user" %> <b><%= a.poster.username %></b> is looking for a lunch buddy!</p>
       </div>
@@ -26,19 +24,17 @@
       </div>
       <hr class="my-1">
       <div class="appt-time d-flex">
-        <div class=""><span class="time-label">Starts</span> <p><%= l a.start_time %></p></div>
+        <div class=""><span class="time-label">Starts</span> <p><%= a.start_time.strftime('%a, %d %b %Y at %I:%M %p') %></p></div>
         <div class="time-vertical-div px-2"><%= fa_icon "arrow-circle-right" %></div>
-        <div><span class="time-label">Ends</span> <p><%= l a.end_time %></p></div>
+        <div><span class="time-label">Ends</span> <p><%= a.end_time.strftime('%a, %d %b %Y at %I:%M %p')%></p></div>
       </div>
       <hr class="my-1">
       <div class="appt-btns text-center">
-        <%# link_to "Details", appointment_path(a), class: "btn btn-sm btn-info" %>
-
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal<%= a.id %>">
-        Details
-      </button>
-
+        <% if current_user.id != a.poster.id && a.status != "booked" %>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal<%= a.id %>">
+          Details
+        </button>
         <!-- Modal -->
         <div class="modal fade" id="modal<%= a.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -54,13 +50,11 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                <button class="btn btn-success btn-sm">Accept Invitation</button>
+                <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
               </div>
             </div>
           </div>
         </div>
-
-        <% if current_user.id != a.poster.id && a.status != "booked" %>
         <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
         <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
         <% else %>
@@ -68,5 +62,14 @@
         <% end %>  
       </div>
     </div>
+  <% else%>
+    <% @noAppt = true %>
   <% end %>
+  <% end %>
+
+<% if @noAppt %>
+<div class="text-center mx-auto">There are currently no available lunch buddies :(</p>
+<% end %>
+
 </div>
+
