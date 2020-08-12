@@ -1,7 +1,7 @@
 <h1 class="text-center">All cuisines</h1>
  <% if current_user.isAdmin %>
     <div class="form-group mt-3 text-left">
-    <%= form_for @cuisine do |f| %>
+    <%= form_for @cuisine, url: {controller: "cuisines", action: "create"} do |f| %>
       <%= f.label :name, "Add cuisine" %>
       <%= f.text_field :name, class: "form-control" %>
     </div>

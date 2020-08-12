@@ -1,7 +1,7 @@
 <h1 class="text-center">All locations</h1>
   <% if current_user.isAdmin %>
     <div class="form-group mt-3 text-left">
-    <%= form_for @location do |f| %>
+    <%= form_for @location, url: {controller: "locations", action: "create"} do |f| %>
       <%= f.label :name, "Add location" %>
       <%= f.text_field :name, class: "form-control" %>
     </div>
