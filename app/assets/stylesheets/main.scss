@@ -152,8 +152,8 @@ footer {
   padding: 5px;
   border-radius: 18px;
   color: white;
-  box-shadow: 1px 1px grey;
-  transition: 300ms;
+  box-shadow: 2.2px 2.2px grey;
+  transition: 200ms;
 }
 
 .page-footer, .page-footer a {
@@ -165,7 +165,7 @@ footer {
 }
 
 .copyright:hover {
-  background-color:$navy;
+  //background-color:$navy;
   color: white;
-  box-shadow: .2px .2px grey;
+  box-shadow: 1.2px 1.2px grey;
 }
