@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_064201) do
+ActiveRecord::Schema.define(version: 2020_08_12_134528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2020_08_10_064201) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.string "title"
+    t.boolean "poster_has_reviewed", default: false
+    t.boolean "respondent_has_reviewed", default: false
   end
 
   create_table "appt_cuisines", force: :cascade do |t|

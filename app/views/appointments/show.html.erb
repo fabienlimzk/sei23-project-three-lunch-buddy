@@ -4,8 +4,8 @@
   <p><b><%= @appointment.poster.username %></b> is looking for a lunch buddy!</p>
   <p>"<%= @appointment.title %>"</p>
   <p>Status: <%= @appointment.status %></p>
-  <p>Start: <%= l @appointment.start_time %></p>
-  <p>End: <%= l @appointment.end_time %></p>
+  <p>Start: <%= @appointment.start_time.strftime('%a, %d %b %Y at %I:%M %p') %></p>
+  <p>End: <%= @appointment.end_time.strftime('%a, %d %b %Y at %I:%M %p') %></p>
 
 <div class="text-center mb-3">
   <% @appointment.locations.each do |l| %>
@@ -21,10 +21,22 @@
   
   <div class="mx-auto">
     <% if current_user.id != @appointment.poster.id && @appointment.status != "booked" %>
-    <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
+    <%= link_to "Accept Invitation", accept_path(@appointment), method: "put", class: "btn btn-sm btn-success" %>
     <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
     <% else %>
     <p>Someone already accepted this invitation/You cannot accept your own invitation</p>
     <% end %>  
+  </div>
+
+   <div class="mx-auto">
+    <% if @appointment.upcoming == 'false' && @appointment.status == 'booked' %>
+      <% if current_user.id == @appointment.poster.id && @appointment.poster_has_reviewed == false || current_user.id == @appointment.respondent.id && @appointment.respondent_has_reviewed == false %>
+      <p>Review your lunch buddy:</p>
+      <%= link_to "Upvote", upvote_path(@appointment), method: "put", class: "btn btn-sm btn-success" %>
+      <%= link_to "Downvote", downvote_path(@appointment), method: "put", class: "btn btn-sm btn-success"%>
+      <% elsif current_user.id == @appointment.poster.id && @appointment.poster_has_reviewed == true || current_user.id == @appointment.respondent.id && @appointment.respondent_has_reviewed == true %>
+      <p>You have already reviewed your buddy.</p>
+      <% end %> 
+    <% end %> 
   </div>
 </div>

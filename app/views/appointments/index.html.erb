@@ -23,7 +23,7 @@
         <p><%= fa_icon "user" %> <b><%= a.poster.username %></b> is looking for a lunch buddy!</p>
       </div>
       <div class="appt-title">
-        <p><%= fa_icon "quote-left" %> <%= a.title %></p>
+        <p><%= fa_icon "quote-left" %> <%= link_to a.title, appointment_path(a) %></p>
       </div>
       <hr class="my-1">
       <div class="appt-time d-flex">
