@@ -4,8 +4,8 @@
   <p><b><%= @appointment.poster.username %></b> is looking for a lunch buddy!</p>
   <p>"<%= @appointment.title %>"</p>
   <p>Status: <%= @appointment.status %></p>
-  <p>Start: <%= l @appointment.start_time %></p>
-  <p>End: <%= l @appointment.end_time %></p>
+  <p>Start: <%= @appointment.start_time.strftime('%a, %d %b %Y at %I:%M %p') %></p>
+  <p>End: <%= @appointment.end_time.strftime('%a, %d %b %Y at %I:%M %p') %></p>
 
 <div class="text-center mb-3">
   <% @appointment.locations.each do |l| %>
