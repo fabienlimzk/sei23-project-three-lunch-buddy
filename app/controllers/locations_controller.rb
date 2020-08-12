@@ -11,6 +11,7 @@ class LocationsController < ApplicationController
   end
 
   def new
+    @locations = Location.all
     @location = Location.new
   end
 

@@ -12,6 +12,7 @@ class PricesController < ApplicationController
 
 
   def new
+    @prices = Price.all
     @price = Price.new
   end
 

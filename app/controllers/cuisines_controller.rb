@@ -11,6 +11,7 @@ class CuisinesController < ApplicationController
   end
 
   def new
+    @cuisines = Cuisine.all
     @cuisine = Cuisine.new
   end
 

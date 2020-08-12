@@ -10,7 +10,6 @@
     <%= form_for @cuisine, url: {controller: "cuisines", action: "create"} do |f| %>
       <%= f.label :name, "Add cuisine" %>
       <%= f.text_field :name, class: "form-control" %>
-    </div>
     <div class="form-group mt-3 text-left">
      <%= f.submit "Save", class: "btn btn-success mt-3" %>
     </div>
