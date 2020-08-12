@@ -12,15 +12,18 @@ class PricesController < ApplicationController
 
 
   def new
+    @prices = Price.all
     @price = Price.new
   end
 
   def create
+    @prices = Price.all
     @price = Price.new(price_params)
     if @price.save
+      flash[:notice] = 'Price Range created'
       redirect_to prices_path
     else
-      render :new
+      render :index
     end
   end
 
