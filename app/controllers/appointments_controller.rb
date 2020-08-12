@@ -59,6 +59,54 @@ class AppointmentsController < ApplicationController
     end  
   end
 
+  def upvote
+    @user = User.find(current_user.id)
+    @appointment = Appointment.find(params[:id])
+    @poster = User.find(@appointment.poster_id)
+    @respondent = User.find(@appointment.respondent_id)
+    if @user.id == @poster
+      @respondent.reputation += 1
+      @appointment.poster_has_reviewed = true
+        if @respondent.save && @appointment.save
+          redirect_to appointment_path(@appointment)
+        else
+          render :show
+        end
+    else 
+      @poster.reputation += 1
+      @appointment.respondent_has_reviewed = true
+      if @poster.save && @appointment.save
+        redirect_to appointment_path(@appointment)
+      else
+        render :show
+      end
+    end
+  end
+
+  def downvote
+    @user = User.find(current_user.id)
+    @appointment = Appointment.find(params[:id])
+    @poster = User.find(@appointment.poster_id)
+    @respondent = User.find(@appointment.respondent_id)
+    if @user.id == @poster
+      @respondent.reputation -= 1
+      @appointment.poster_has_reviewed = true
+        if @respondent.save && @appointment.save
+          redirect_to appointment_path(@appointment)
+        else
+          render :show
+        end
+    else 
+      @poster.reputation -= 1
+      @appointment.respondent_has_reviewed = true
+      if @poster.save && @appointment.save
+        redirect_to appointment_path(@appointment)
+      else
+        render :show
+      end
+    end
+  end
+
   private 
 
   def appointment_params

@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   put '/appointments/:id/accept', to: 'appointments#accept', as: "accept"
 
+  put '/appointments/:id/downvote', to: 'appointments#downvote', as: "downvote"
+  put '/appointments/:id/upvote', to: 'appointments#upvote', as: "upvote"
+
   resources :appointments
   
   resources :users do
