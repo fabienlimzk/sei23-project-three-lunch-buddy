@@ -3,7 +3,7 @@ class Price < ApplicationRecord
   has_many :appointments, through: :appt_prices, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 3 }
-  validates_uniqueness_of :name, :message => '%{value} already exists'
+  validates_uniqueness_of :name, :case_sensitive => false, :message => '%{value} already exists'
 
   def to_s
     name
