@@ -62,6 +62,14 @@
         <% end %>  
       </div>
     </div>
+  <% else%>
+    <% @noAppt = true %>
   <% end %>
   <% end %>
+
+<% if @noAppt %>
+<div class="text-center mx-auto">There are currently no available lunch buddies :(</p>
+<% end %>
+
 </div>
+
