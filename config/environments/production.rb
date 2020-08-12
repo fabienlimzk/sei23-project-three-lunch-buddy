@@ -59,7 +59,17 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "lunch_buddy_production"
-
+  config.action_mailer.delivery_method = :smtp
+  host = 'localhost:3000' #replace with your own url
+  config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => 'sandbox73ab0d030415414db737376ef2503772.mailgun.org',
+    :user_name => "postmaster@sandbox73ab0d030415414db737376ef2503772.mailgun.org",
+    :password => "829c3a68481871a3e327d9b07c72e39f-07e45e2a-3c236265"
+  }
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.

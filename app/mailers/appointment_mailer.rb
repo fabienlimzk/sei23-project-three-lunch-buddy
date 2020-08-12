@@ -1,5 +1,5 @@
 class AppointmentMailer < ApplicationMailer
-
+  default from: 'postmaster@sandbox73ab0d030415414db737376ef2503772.mailgun.org'
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
