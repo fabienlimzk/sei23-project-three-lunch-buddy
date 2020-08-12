@@ -36,13 +36,14 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
+  # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-    :authentication => :plain,
-    :address => "smtp.mailgun.org",
-    :port => 587,
-    :domain => 'sandbox73ab0d030415414db737376ef2503772.mailgun.org',
-    :user_name => "postmaster@sandbox73ab0d030415414db737376ef2503772.mailgun.org",
-    :password => "829c3a68481871a3e327d9b07c72e39f-07e45e2a-3c236265"
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => ENV['gmail_username'],
+    :password             => ENV['gmail_password'],
+    :authentication       => "plain",
+    :enable_starttls_auto => true
   }
 
   config.action_mailer.perform_caching = false
