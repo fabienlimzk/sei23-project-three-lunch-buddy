@@ -54,7 +54,6 @@ class AppointmentsController < ApplicationController
     @appointment.status = "booked"
     @appointment.respondent_id = current_user.id
     if @appointment.save
-      AppointmentMailer.with(appointment: @appointment, poster: @appointment.poster, respondent: @appointment.respondent).user_accepted_appointment.deliver
       redirect_to user_appointments_path(current_user.id)
     end  
   end
