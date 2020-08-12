@@ -1,7 +1,10 @@
 <h1 class="text-center">Available lunch buddies</h1>
+<% @noAppt = [] %>
+
 <div class="row d-flex flex-wrap mx-auto justify-content-between">
   <% @appointments.reverse.each do |a| %>
       <% if a.happening == 'open' %>
+        <% @noAppt << a.id %>
     <div class="appt-card card mx-auto mb-4 p-2 text-left d-flex flex-column justify-content-between">
       <div class="appt-tags text-left">
       <%= fa_icon "tags" %>
@@ -64,4 +67,9 @@
     </div>
   <% end %>
   <% end %>
+  
+<% if @noAppt.empty? %>
+<div class="text-center mx-auto">There are currently no available lunch buddies :(</p>
+<% end %>
+
 </div>
