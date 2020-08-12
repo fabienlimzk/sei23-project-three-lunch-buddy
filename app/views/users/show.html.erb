@@ -40,9 +40,9 @@
       </div>
       <hr class="my-1">
       <div class="appt-time d-flex">
-        <div class=""><span class="time-label">Starts</span> <p><%= l a.start_time %></p></div>
+        <div class=""><span class="time-label">Starts</span> <p><%= a.start_time.strftime('%a, %d %b %Y at %I:%M %p') %></p></div>
         <div class="time-vertical-div px-2"><%= fa_icon "arrow-circle-right" %></div>
-        <div><span class="time-label">Ends</span> <p><%= l a.end_time %></p></div>
+        <div><span class="time-label">Ends</span> <p><%= a.end_time.strftime('%a, %d %b %Y at %I:%M %p')%></p></div>
       </div>
       <hr class="my-1">
       <div class="appt-btns text-center">
