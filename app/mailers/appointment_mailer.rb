@@ -6,8 +6,10 @@ class AppointmentMailer < ApplicationMailer
   #   en.appointment_mailer.user_accepted_appointment.subject
   #
   def user_accepted_appointment
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+    @poster = params[:poster]
+    @respondent = params[:respondent]
+    @appointment = params[:appointment]
+    
+    mail to:[@poster.email, @respondent.email], subject:"Hooray! #{@respondent.username} and #{@poster.username} are now lunch buddies! (Appointment: #{@appointment.title})"
   end
 end
