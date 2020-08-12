@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'homepage/index'
   devise_for :users
 
   put '/appointments/:id/accept', to: 'appointments#accept', as: "accept"
@@ -15,6 +16,6 @@ Rails.application.routes.draw do
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
-  root 'appointments#index'
+  root 'homepage#index'
 
 end

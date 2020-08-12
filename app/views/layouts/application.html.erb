@@ -6,7 +6,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500&display=swap', media: 'all', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap', media: 'all', 'data-turbolinks-track' => true %>
     <%= favicon_link_tag asset_path('lunch-favicon.png') %>
 
 
@@ -16,7 +16,8 @@
   <body>
   
   <%# START NAVBAR %>
-    <nav class="navbar navbar-left navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-default navbar-expand-lg navbar-dark">
+    <div class="container">
     <%= image_tag "lunch-bag.png", class: "nav-logo navbar-brand" %>
     <%= link_to "lunch buddy", appointments_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,6 +51,7 @@
         <% end %>
       </div>
     </div>
+    </div>
   </nav>
   <%# END NAVBAR %>
   <%# START FLASH MESSAGES %>
@@ -60,18 +62,17 @@
       <p class="alert alert-danger"><%= alert %></p>
     <% end%>
   <%# END FLASH MESSAGES %>
-  <div class="container wrapper">
     <%= yield %>
-  </div>
   </body>
 
   <footer class="page-footer">
-    <div class="footer-copyright text-center py-2">
-      <span class="copyright">© 2020 Chonky</span>
+    <div class="footer-copyright text-right py-2 pr-3">
+      <span class="copyright">
       <%= link_to "https://github.com/fabienlimzk/lunch-buddy" do %>
+      © 2020 Chonky
         <%= fa_icon "github" %>
       <% end %>
-
+      </span>
     </div>
   </footer>
 </html>

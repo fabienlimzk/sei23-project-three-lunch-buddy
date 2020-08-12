@@ -1,4 +1,5 @@
 // COLORS
+$main-color: #669db3;
 $primary-orange: rgb(249, 153, 50);
 $primary-green: rgb(105, 158, 68);
 $red: rgb(213, 53, 44);
@@ -13,14 +14,40 @@ $navy: rgb(53, 55, 68);
 
 @import "font-awesome";
 
+
 body {
-  font-family: 'Mulish', Helvetica, sans-serif, sans-serif;
-  font-size: 82%;
-  background-color: white;
+  font-family: 'Work Sans', Helvetica, sans-serif, sans-serif;
+  font-size: 92%;
 }
 
-.wrapper {
-  padding-top: 20px;
+.landing-div {
+  background-color: #aed9e9;
+}
+.intro-section {
+  min-height: 70vh;
+  background-color: $main-color;
+  border-bottom-right-radius: 90%;
+}
+
+.intro-header {
+  font-weight: bold;
+  color: white;
+  font-size: 2.6rem;
+}
+
+.second-intro-section {
+  min-height: 20vh;
+  background-color: #f18070;
+  border-top-left-radius: 90%;
+}
+
+.about-section {
+  min-height: 90vh;
+}
+
+.about-header {
+  color: $navy;
+  font-weight: bold;
 }
 
 h1 {
@@ -32,7 +59,7 @@ h1 {
 }
 
 .navbar {
-  background-color: $navy;
+  background-color: $main-color;
 }
 
 .navbar-brand {
@@ -46,6 +73,10 @@ h1 {
   padding: 2px;
   border-radius: 50%;
   background-color: $steel-blue;
+}
+
+.landing-img-sm {
+  width: 80px;
 }
 
 .appt-card {
@@ -116,14 +147,25 @@ footer {
 }
 
 .copyright {
-  font-size: .65rem;
+  font-size: .55rem;
+  background-color: $main-color;
+  padding: 5px;
+  border-radius: 18px;
+  color: white;
+  box-shadow: 1px 1px grey;
+  transition: 300ms;
 }
 
 .page-footer, .page-footer a {
-  background-color: $navy;
   color: white;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
 }
 
-.page-footer a:hover {
-  color: $steel-blue;
+.copyright:hover {
+  background-color:$navy;
+  color: white;
+  box-shadow: .2px .2px grey;
 }
