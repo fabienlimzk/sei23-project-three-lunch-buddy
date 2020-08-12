@@ -1,74 +1,75 @@
-  <h1 class="text-center">Available lunch buddies</h1>
-  <div class="row d-flex flex-wrap mx-auto justify-content-between">
-    <% @appointments.reverse.each do |a| %>
-        <% if a.happening == 'open' %>
-      <div class="appt-card card mx-auto mb-4 p-2 text-left d-flex flex-column justify-content-between">
-        <div class="appt-tags text-left">
-        <%= fa_icon "tags" %>
-          <% a.locations.each do |l| %>
-              <span><%= link_to l.name, location_path(l), class: "badge badge-location" %></span>
-            <% end %>
-            <% a.cuisines.each do |c| %>
-              <span><%= link_to c.name, cuisine_path(c), class: "badge badge-cuisine" %></span>
-            <% end %>
-            <% a.prices.each do |p| %>
-              <span><%= link_to p.name, price_path(p), class: "badge badge-price" %></span>
+<h1 class="text-center">Available lunch buddies</h1>
+<% @noAppt = [] %>
+
+<div class="row d-flex flex-wrap mx-auto justify-content-between">
+  <% @appointments.reverse.each do |a| %>
+      <% if a.happening == 'open' %>
+        <% @noAppt << a.id %>
+    <div class="appt-card card mx-auto mb-4 p-2 text-left d-flex flex-column justify-content-between">
+      <div class="appt-tags text-left">
+      <%= fa_icon "tags" %>
+        <% a.locations.each do |l| %>
+            <span><%= link_to l.name, location_path(l), class: "badge badge-location" %></span>
           <% end %>
-        </div>
-        <hr class="my-1">
-        <div class="appt-header">
-          <p><%= fa_icon "user" %> <b><%= a.poster.username %></b> is looking for a lunch buddy!</p>
-        </div>
-        <div class="appt-title">
-          <p><%= fa_icon "quote-left" %> <%= a.title %></p>
-        </div>
-        <hr class="my-1">
-        <div class="appt-time d-flex">
-          <div class=""><span class="time-label">Starts</span> <p><%= a.start_time.strftime('%a, %d %b %Y at %I:%M %p') %></p></div>
-          <div class="time-vertical-div px-2"><%= fa_icon "arrow-circle-right" %></div>
-          <div><span class="time-label">Ends</span> <p><%= a.end_time.strftime('%a, %d %b %Y at %I:%M %p')%></p></div>
-        </div>
-        <hr class="my-1">
-        <div class="appt-btns text-center">
-          <% if current_user.id != a.poster.id && a.status != "booked" %>
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal<%= a.id %>">
-            Details
-          </button>
-          <!-- Modal -->
-          <div class="modal fade" id="modal<%= a.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Posted by <%= a.poster.firstname %> <%= a.poster.lastname %></h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <%= a.content %>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
-                  <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
-                </div>
+          <% a.cuisines.each do |c| %>
+            <span><%= link_to c.name, cuisine_path(c), class: "badge badge-cuisine" %></span>
+          <% end %>
+          <% a.prices.each do |p| %>
+            <span><%= link_to p.name, price_path(p), class: "badge badge-price" %></span>
+        <% end %>
+      </div>
+      <hr class="my-1">
+      <div class="appt-header">
+        <p><%= fa_icon "user" %> <b><%= a.poster.username %></b> is looking for a lunch buddy!</p>
+      </div>
+      <div class="appt-title">
+        <p><%= fa_icon "quote-left" %> <%= a.title %></p>
+      </div>
+      <hr class="my-1">
+      <div class="appt-time d-flex">
+        <div class=""><span class="time-label">Starts</span> <p><%= a.start_time.strftime('%a, %d %b %Y at %I:%M %p') %></p></div>
+        <div class="time-vertical-div px-2"><%= fa_icon "arrow-circle-right" %></div>
+        <div><span class="time-label">Ends</span> <p><%= a.end_time.strftime('%a, %d %b %Y at %I:%M %p')%></p></div>
+      </div>
+      <hr class="my-1">
+      <div class="appt-btns text-center">
+        <% if current_user.id != a.poster.id && a.status != "booked" %>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal<%= a.id %>">
+          Details
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="modal<%= a.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Posted by <%= a.poster.firstname %> <%= a.poster.lastname %></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= a.content %>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
               </div>
             </div>
           </div>
-          <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
-          <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
-          <% else %>
-          <p>Someone already accepted this invitation/You cannot accept your own invitation</p>
-          <% end %>  
         </div>
+        <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
+        <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
+        <% else %>
+        <p>Someone already accepted this invitation/You cannot accept your own invitation</p>
+        <% end %>  
       </div>
-    <% else%>
-      <% @noAppt = true %>
-    <% end %>
-    <% end %>
-
-  <% if @noAppt %>
-  <div class="text-center mx-auto">There are currently no available lunch buddies :(</p>
+    </div>
   <% end %>
-  </div>
+  <% end %>
+  
+<% if @noAppt.empty? %>
+<div class="text-center mx-auto">There are currently no available lunch buddies :(</p>
+<% end %>
 
+</div>
