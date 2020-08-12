@@ -15,11 +15,13 @@ class CuisinesController < ApplicationController
   end
 
   def create
+    @cuisines = Cuisine.all
     @cuisine = Cuisine.new(cuisine_params)
     if @cuisine.save
+      flash[:notice] = 'New cuisine created'
       redirect_to cuisines_path
     else
-      render :new
+      render :index
     end
   end
 

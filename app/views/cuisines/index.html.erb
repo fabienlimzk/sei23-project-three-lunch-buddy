@@ -1,6 +1,12 @@
 <h1 class="text-center">All cuisines</h1>
  <% if current_user.isAdmin %>
     <div class="form-group mt-3 text-left">
+    <% if @cuisine.errors.any? %>
+      <%= pluralize(@cuisine.errors.count, "error") %>
+        <% @cuisine.errors.full_messages.each do |message| %>
+          <div class="alert alert-danger"> <%= message %> </div>
+        <% end %>
+    <% end %>
     <%= form_for @cuisine, url: {controller: "cuisines", action: "create"} do |f| %>
       <%= f.label :name, "Add cuisine" %>
       <%= f.text_field :name, class: "form-control" %>
