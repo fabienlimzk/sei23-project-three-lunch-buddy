@@ -32,6 +32,13 @@ body {
   border-bottom-right-radius: 90%;
 }
 
+.profile-header {
+  background-color: $main-color;
+  padding-top: 0;
+  margin-top: 0;
+  color: white;
+}
+
 .devise-section {
   min-height: 90vh;
   background-color: $main-color;

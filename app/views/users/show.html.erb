@@ -1,5 +1,6 @@
-<h1 class="text-center">Your Profile</h1>
-
+<div class="intro-section">
+<br>
+<h1 class="text-center profile-header">Your Profile</h1>
 <div class="card mx-auto col-10 col-md-6 shadow p-3 mb-5 bg-white rounded text-center">
 <div class="card-avatar">
   <%= image_tag(current_user.avatar_thumbnail, :class => "profile-avatar img-fluid rounded-circle") %>
@@ -18,6 +19,7 @@
         Warning: Users with negative reputations have consistently received downvotes from past lunch buddies. Be cautious when accepting invitations. 
       <% end %>
       </h6>
+</div>
 </div>
 
 <div class="text-center mx-auto">
