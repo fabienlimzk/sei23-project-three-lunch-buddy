@@ -28,7 +28,7 @@
     <% end %>  
   </div>
 
-   <div class="mx-auto">
+  <div class="mx-auto">
     <% if @appointment.upcoming == 'false' && @appointment.status == 'booked' %>
       <% if current_user.id == @appointment.poster.id && @appointment.poster_has_reviewed == false || current_user.id == @appointment.respondent.id && @appointment.respondent_has_reviewed == false %>
       <p>Review your lunch buddy:</p>
