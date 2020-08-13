@@ -165,7 +165,7 @@ transform: translate(0, 0);
 }
 
 .badge-location, .badge-location a {
-  background-color: $pastel-orange;
+  background-color: $secondary-color;
   color: white;
   &:hover {
     background-color: rgba(94, 92, 92, 0.562);
@@ -183,7 +183,7 @@ transform: translate(0, 0);
 }
 
 .badge-price, .badge-price a {
-  background-color: $red;
+  background-color: $navy;
   color: white;
   &:hover {
     background-color: rgba(94, 92, 92, 0.562);
