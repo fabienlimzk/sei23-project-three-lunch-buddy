@@ -21,13 +21,10 @@ class Appointment < ApplicationRecord
   validates :start_time, :end_time, :presence => true
   validate :min_event_duration
 
-  attr_accessor :address
   geocoded_by :address
   after_validation :geocode
 
-  validates :address, :presence => true,
-
-  :length => { :minimum => 5 }
+  validates :address, :presence => true, :length => { :minimum => 5 }
 
   def happening
     current_time = Time.now.strftime('%H:%M:%S')

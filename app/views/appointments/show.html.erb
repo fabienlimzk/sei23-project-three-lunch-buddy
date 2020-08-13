@@ -14,17 +14,17 @@
   <p>Start: <%= @appointment.start_time.strftime('%a, %d %b %Y at %I:%M %p') %></p>
   <p>End: <%= @appointment.end_time.strftime('%a, %d %b %Y at %I:%M %p') %></p>
 
-<div class="text-center mb-3">
-  <% @appointment.locations.each do |l| %>
-    <span><%= link_to l.name, location_path(l), class: "badge badge-location" %></span>
-  <% end %>
-  <% @appointment.cuisines.each do |c| %>
-    <span><%= link_to c.name, cuisine_path(c), class: "badge badge-cuisine" %></span>
-  <% end %>
-  <% @appointment.prices.each do |p| %>
-    <span><%= link_to p.name, price_path(p), class: "badge badge-price" %></span>
-  <% end %>
-</div>
+  <div class="text-center mb-3">
+    <% @appointment.locations.each do |l| %>
+      <span><%= link_to l.name, location_path(l), class: "badge badge-location" %></span>
+    <% end %>
+    <% @appointment.cuisines.each do |c| %>
+      <span><%= link_to c.name, cuisine_path(c), class: "badge badge-cuisine" %></span>
+    <% end %>
+    <% @appointment.prices.each do |p| %>
+      <span><%= link_to p.name, price_path(p), class: "badge badge-price" %></span>
+    <% end %>
+  </div>
   
 
   <div class="mx-auto">
@@ -51,8 +51,8 @@
   <%= content_tag :div, class: "appointment", data: { appointment: @appointment } do %>
 <% end %>
 
-  <div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
+  <div class="text-center" style='max-width: 650px;'>
+    <div id="map" style='max-width: 650px; height: 400px;'></div>
   </div>
   
   <%= javascript_pack_tag 'map' %>
