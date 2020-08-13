@@ -1,6 +1,59 @@
 <h1 class="text-center">All locations</h1>
+
+<div class="row container d-flex flex-column-reverse flex-md-row mx-auto justify-content-between">
+  <div class="col-11 col-md-6">
+  <%# LIST %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">location</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @locations.each do |location| %>
+      <tr><td><%= link_to location.name, location_path(location) %></td>
+    <% if current_user.isAdmin %>
+        <td>
+        <%= link_to "Edit", edit_location_path(location), class: "btn btn-warning btn-sm" %>
+
+      <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal<%= location.id %>">
+          Delete
+        </button>
+      <!-- Modal -->
+        <div class="modal fade" id="modal<%= location.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete "<%= location.name %>"?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                <%= link_to "Delete", location_path(location), method: "delete", class: "btn btn-danger btn-sm" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        </td></tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+</div>
+    
+    <div class="col-0 col-md-1">
+    <%# filler column %>
+    </div>
+
+  <%# ADD NEW %>
+  <div class="col-9 col-md-5 text-center">
+  <%= image_tag "pin.png", class: "img-fluid tags-img mb-3" %>
   <% if current_user.isAdmin %>
-    <div class="form-group mt-3 text-left">
      <% if @location.errors.any? %>
       <%= pluralize(@location.errors.count, "error") %>
         <% @location.errors.full_messages.each do |message| %>
@@ -8,24 +61,10 @@
         <% end %>
     <% end %>
     <%= form_for @location, url: {controller: "locations", action: "create"} do |f| %>
-      <%= f.label :name, "Add location" %>
+      <%= f.label :name, "add location" %>
       <%= f.text_field :name, class: "form-control" %>
-    <div class="form-group mt-3 text-left">
      <%= f.submit "Save", class: "btn btn-success mt-3" %>
-    </div>
     <% end %>
   <% end %>
-<div class="row d-flex flex-wrap">
-
-<% @locations.each do |location| %>
-  <div class="border col-2 p-2 mx-1 text-center">
-    <%= link_to location.name, location_path(location) %>
-  <% if current_user.isAdmin %>
-    <div class="d-block">
-      <%= link_to "Edit", edit_location_path(location), class: "btn btn-warning btn-sm" %>
-      <%= link_to "Delete", location_path(location), method: "delete", data:{confirm: "Delete this location?"}, class: "btn btn-danger btn-sm" %>
-    </div>
-   <% end %>
   </div>
-<% end %>
 </div>

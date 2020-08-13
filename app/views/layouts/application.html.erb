@@ -16,18 +16,26 @@
   <body>
   
   <%# START NAVBAR %>
+  <% if user_signed_in? %>
     <nav class="navbar navbar-default navbar-expand-lg navbar-dark">
+  <% else %>
+    <nav class="navbar navbar-default navbar-expand-lg navbar-dark">
+  <% end %>
     <div class="container-fluid">
     <%= image_tag "lunch-bag.png", class: "nav-logo navbar-brand" %>
-    <%= link_to "lunch buddy", appointments_path, class: "navbar-brand" %>
+    <% if user_signed_in? %>
+      <%= link_to "lunch buddy", appointments_path, class: "navbar-brand" %>
+    <% else %>
+      <%= link_to "lunch buddy", homepage_index_path, class: "navbar-brand" %>
+    <% end %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ml-auto">
-        <%= link_to "Home", appointments_path, class: "nav-item nav-link" %>
         <% if user_signed_in? %>
           <%# current_user.avatar %>
+          <%# link_to "Home", appointments_path, class: "nav-item nav-link" %>
           <%= link_to "Edit Account", edit_user_registration_path(current_user), class: "nav-item nav-link" %>
           <%= link_to "Profile", user_path(current_user), class: "nav-item nav-link" %>
           <%= link_to "New Appointment", new_user_appointment_path(current_user), class: "nav-item nav-link" %>

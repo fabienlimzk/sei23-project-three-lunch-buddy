@@ -1,5 +1,7 @@
 // COLORS
 $main-color: #669db3;
+$secondary-color: #f18070;
+$tertiary-color: #aed9e9;
 $primary-orange: rgb(249, 153, 50);
 $primary-green: rgb(105, 158, 68);
 $red: rgb(213, 53, 44);
@@ -17,16 +19,34 @@ $navy: rgb(53, 55, 68);
 body {
   font-family: 'Work Sans', Helvetica, sans-serif, sans-serif;
   font-size: 92%;
+  color: $navy;
 }
 
 .landing-div {
-  background-color: #aed9e9;
+  background-color: $tertiary-color;
 }
 
 .intro-section {
   min-height: 70vh;
   background-color: $main-color;
   border-bottom-right-radius: 90%;
+}
+
+.profile-header {
+  background-color: $main-color;
+  padding-top: 0;
+  margin-top: 0;
+  color: white;
+}
+
+.devise-section {
+  min-height: 90vh;
+  background-color: $main-color;
+  border-bottom-right-radius: 90%;
+}
+
+.input-group-text, .signup-fields input, .custom-file {
+  font-size: .75rem;
 }
 
 .intro-header {
@@ -37,7 +57,7 @@ body {
 
 .second-intro-section {
   min-height: 20vh;
-  background-color: #f18070;
+  background-color: $secondary-color;
   border-top-left-radius: 90%;
 }
 
@@ -54,6 +74,7 @@ h1 {
   font-size: 1.4rem;
   font-weight: bold;
   text-transform: lowercase;
+  padding-top: 18px;
   padding-bottom: .8rem;
   margin-top: 20px;
 }
@@ -75,14 +96,72 @@ h1 {
   background-color: $steel-blue;
 }
 
+section {
+  opacity: 0;
+  transition: opacity 1s;
+  transform: translate(0, 80px);
+  transition: all 1.5s;
+}
+  
+section.visible { 
+opacity: 1;
+transform: translate(0, 0);
+}
+
+.landing-img-xs {
+  width: 30px;
+}
+
 .landing-img-sm {
   width: 80px;
+}
+
+.tags-img {
+  width: 140px;
+}
+
+.devise-links, .devise-links a{
+  color: white;
+  font-size: .8rem;
+}
+
+.btn-login {
+  all: unset;
+}
+
+.btn-login {
+  font-weight: bold;
+  color: #f6bd9d;
+  transition: 200ms;
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+.collapse-link a {
+  color: $tertiary-color;
+  transition: 300ms;
+  &:hover {
+    color: $navy;
+    text-decoration: none;
+  }
 }
 
 .appt-card {
   width: 320px;
   min-height: 290px;
-  border-top: 6px solid $navy;
+  border-top: 9px solid $tertiary-color;
+  color: $navy;
+}
+
+.appt-title a, .appt-header a, .accepted a {
+  color: $main-color;
+  transition: 200ms;
+}
+
+.appt-title a:hover, .appt-header a:hover, .accepted a:hover {
+  text-decoration: none;
+  color: $navy;
 }
 
 .appt-title {
@@ -100,8 +179,20 @@ h1 {
   font-size: .7rem;
 }
 
+.table thead tr th, .table tbody tr td {
+  border: none;
+}
+
+.table a:not(.btn) {
+  color: $main-color;
+  &:hover {
+    text-decoration: none;
+    color: $secondary-color;
+  }
+}
+
 .badge-location, .badge-location a {
-  background-color: $pastel-orange;
+  background-color: $secondary-color;
   color: white;
   &:hover {
     background-color: rgba(94, 92, 92, 0.562);
@@ -119,7 +210,7 @@ h1 {
 }
 
 .badge-price, .badge-price a {
-  background-color: $red;
+  background-color: $navy;
   color: white;
   &:hover {
     background-color: rgba(94, 92, 92, 0.562);

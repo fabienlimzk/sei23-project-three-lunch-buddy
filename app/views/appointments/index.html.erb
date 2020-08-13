@@ -1,7 +1,11 @@
 <h1 class="text-center">Available lunch buddies</h1>
+  <div class="text-center mx-auto pb-4">
+     <%= image_tag "bagel.png", class: "landing-img-xs img-fluid" %>
+  </div>
+
 <% @noAppt = [] %>
 
-<div class="row d-flex flex-wrap mx-auto justify-content-between">
+<div class="row d-flex flex-wrap mx-auto justify-content-between container">
   <% @appointments.reverse.each do |a| %>
       <% if a.happening == 'open' %>
         <% @noAppt << a.id %>
@@ -20,7 +24,7 @@
       </div>
       <hr class="my-1">
       <div class="appt-header">
-        <p><%= fa_icon "user" %> <b><%= a.poster.username %></b> is looking for a lunch buddy!</p>
+        <p><%= fa_icon "user" %> <b><%= link_to a.poster.username, user_path(a.poster.id)  %></b> is looking for a lunch buddy!</p>
       </div>
       <div class="appt-title">
         <p><%= fa_icon "quote-left" %> <%= link_to a.title, appointment_path(a) %></p>
@@ -33,7 +37,7 @@
       </div>
       <hr class="my-1">
       <div class="appt-btns text-center">
-        <% if current_user.id != a.poster.id && a.status != "booked" %>
+        
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal<%= a.id %>">
           Details
@@ -51,17 +55,18 @@
               <div class="modal-body">
                 <%= a.content %>
               </div>
+              <% if current_user.id != a.poster.id && a.status != "booked" %>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
                 <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
               </div>
+               <% end %>
             </div>
           </div>
         </div>
+         <% if current_user.id != a.poster.id && a.status != "booked" %>
         <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
         <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
-        <% else %>
-        <p>Someone already accepted this invitation/You cannot accept your own invitation</p>
         <% end %>  
       </div>
     </div>
