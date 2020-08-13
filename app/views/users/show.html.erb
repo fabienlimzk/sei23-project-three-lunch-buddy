@@ -10,6 +10,14 @@
       Account type: 
       <% if @user.isAdmin %> Admin <% else %> User <% end %>
       </h6>
+      <h6>
+      Reputation: <%= @user.reputation %>
+      </h6>
+      <h6 style="color:red;">
+      <% if @user.reputation < 0 && current_user.id != @user.id %>
+        Warning: Users with negative reputations have consistently received downvotes from past lunch buddies. Be cautious when accepting invitations. 
+      <% end %>
+      </h6>
 </div>
 
 <h1 class="text-center mb-3">Your Appointments</h1>
