@@ -33,7 +33,7 @@ Appointment.create(title: 'Looking for a lunch buddy!', poster_id: 1, status: 0,
 
 Appointment.create(title: 'Come dine with me', poster_id: 1, status: 0, start_time: DateTime.new(2020,9,15,12), end_time: DateTime.new(2020,9,15,13), content:'I want to expand my palate. Join me on a food adventure!', cuisine_ids: [2], location_ids: [2], price_ids: [2])
 
-Appointment.create(title: 'Craving mexican food', poster_id: 1, respondent_id: 2, status: 0, start_time: DateTime.new(2020,9,11,12), end_time: DateTime.new(2020,9,11,13), content:'let us eat tacosssss', cuisine_ids: [3], location_ids: [1,2,3], price_ids: [2, 3])
+Appointment.create(title: 'Craving mexican food', poster_id: 1, respondent_id: 2, status: 1, start_time: DateTime.new(2020,9,11,12), end_time: DateTime.new(2020,9,11,13), content:'let us eat tacosssss', cuisine_ids: [3], location_ids: [1,2,3], price_ids: [2, 3])
 
 
 
