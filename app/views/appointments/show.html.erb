@@ -53,7 +53,7 @@
       <%= link_to "Upvote", upvote_path(@appointment), method: "put", class: "btn btn-sm btn-success" %>
       <%= link_to "Downvote", downvote_path(@appointment), method: "put", class: "btn btn-sm btn-success"%>
       <% elsif current_user.id == @appointment.poster.id && @appointment.poster_has_reviewed == true || current_user.id == @appointment.respondent.id && @appointment.respondent_has_reviewed == true %>
-      <p>You have reviewed your buddy.</p>
+      <p>You have reviewed your buddy</p>
       <% end %> 
     <% end %> 
   </div>
