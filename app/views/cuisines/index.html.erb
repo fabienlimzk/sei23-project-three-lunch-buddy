@@ -1,30 +1,70 @@
 <h1 class="text-center">All cuisines</h1>
- <% if current_user.isAdmin %>
-    <div class="form-group mt-3 text-left">
-    <% if @cuisine.errors.any? %>
+
+<div class="row container d-flex flex-column-reverse flex-md-row mx-auto justify-content-between">
+  <div class="col-11 col-md-6">
+  <%# LIST %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">cuisine</th>
+      <th scope="col">actions</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @cuisines.each do |cuisine| %>
+      <tr><td><%= link_to cuisine.name, cuisine_path(cuisine) %></td>
+    <% if current_user.isAdmin %>
+        <td>
+        <%= link_to "Edit", edit_cuisine_path(cuisine), class: "btn btn-warning btn-sm" %>
+
+      <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal<%= cuisine.id %>">
+          Delete
+        </button>
+      <!-- Modal -->
+        <div class="modal fade" id="modal<%= cuisine.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete "<%= cuisine.name %>"?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                <%= link_to "Delete", cuisine_path(cuisine), method: "delete", class: "btn btn-danger btn-sm" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        </td></tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+</div>
+    
+    <div class="col-0 col-md-1">
+    <%# filler column %>
+    </div>
+
+  <%# ADD NEW %>
+  <div class="col-9 col-md-5 text-center">
+  <%= image_tag "cuisine.png", class: "img-fluid tags-img mb-3" %>
+  <% if current_user.isAdmin %>
+     <% if @cuisine.errors.any? %>
       <%= pluralize(@cuisine.errors.count, "error") %>
         <% @cuisine.errors.full_messages.each do |message| %>
           <div class="alert alert-danger"> <%= message %> </div>
         <% end %>
     <% end %>
     <%= form_for @cuisine, url: {controller: "cuisines", action: "create"} do |f| %>
-      <%= f.label :name, "Add cuisine" %>
+      <%= f.label :name, "add cuisine" %>
       <%= f.text_field :name, class: "form-control" %>
-    <div class="form-group mt-3 text-left">
      <%= f.submit "Save", class: "btn btn-success mt-3" %>
-    </div>
     <% end %>
   <% end %>
-<div class="row d-flex flex-wrap">
-<% @cuisines.each do |cuisine| %>
-  <div class="border col-3 p-2 mx-1 text-center">
-    <%= link_to cuisine.name, cuisine_path(cuisine) %>
-  <% if current_user.isAdmin %>
-    <div class="d-block">
-      <%= link_to "Edit", edit_cuisine_path(cuisine), class: "btn btn-warning btn-sm" %>
-      <%= link_to "Delete", cuisine_path(cuisine), method: "delete", data:{confirm: "Delete this cuisine?"}, class: "btn btn-danger btn-sm" %>
-    </div>
-   <% end %>
   </div>
-<% end %>
 </div>

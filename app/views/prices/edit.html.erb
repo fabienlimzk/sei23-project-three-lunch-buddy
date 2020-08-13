@@ -1,11 +1,13 @@
-<div class=“container”>
+<h1 class="text-center">Edit price range</h1>
+
+<div class="container mx-auto text-center">
 <%= form_for @price do |f| %>
   <div class=“form-row”>
-    <%= f.label :name, "Name" %>
+    <%= f.label :name, "price range" %><br>
     <%= f.text_field :name %>
   </div>
   <div class=“form-row”>
-    <%= f.submit "Save" %>
+    <%= f.submit "Save", class: "btn btn-success mt-2" %>
   </div>
 <% end %>
 </div>
