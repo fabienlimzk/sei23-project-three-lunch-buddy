@@ -1,5 +1,6 @@
 // COLORS
 $main-color: #669db3;
+$secondary-color: #f18070;
 $primary-orange: rgb(249, 153, 50);
 $primary-green: rgb(105, 158, 68);
 $red: rgb(213, 53, 44);
@@ -29,6 +30,16 @@ body {
   border-bottom-right-radius: 90%;
 }
 
+.devise-section {
+  min-height: 90vh;
+  background-color: $main-color;
+  border-bottom-right-radius: 90%;
+}
+
+.input-group-text, .signup-fields input, .custom-file {
+  font-size: .75rem;
+}
+
 .intro-header {
   font-weight: bold;
   color: white;
@@ -37,7 +48,7 @@ body {
 
 .second-intro-section {
   min-height: 20vh;
-  background-color: #f18070;
+  background-color: $secondary-color;
   border-top-left-radius: 90%;
 }
 
@@ -75,8 +86,30 @@ h1 {
   background-color: $steel-blue;
 }
 
+.landing-img-xs {
+  width: 30px;
+}
+
 .landing-img-sm {
   width: 80px;
+}
+
+.devise-links, .devise-links a{
+  color: white;
+  font-size: .8rem;
+}
+
+.btn-login {
+  all: unset;
+}
+
+.btn-login {
+  font-weight: bold;
+  color: #f6bd9d;
+  transition: 200ms;
+  &:hover {
+    color: $secondary-color;
+  }
 }
 
 .appt-card {
