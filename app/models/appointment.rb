@@ -21,23 +21,28 @@ class Appointment < ApplicationRecord
   validates :start_time, :end_time, :presence => true
   validate :min_event_duration
 
- def happening
-  current_time = Time.now.strftime('%H:%M:%S')
-  if ((self.end_time.today? || self.end_time.past?) && self.end_time.strftime('%H:%M:%S') < current_time) || (self.start_time.past? || (self.start_time.today? && self.start_time.strftime('%H:%M:%S') < current_time)) || (self.status == 'booked')
-    "closed"
-  else
-    "open"
-  end
- end
+  geocoded_by :address
+  after_validation :geocode
 
- def upcoming
-  current_time = Time.now.strftime('%H:%M:%S')
-  if ((self.end_time.today? || self.end_time.past?) && self.end_time.strftime('%H:%M:%S') < current_time) || (self.start_time.past? || (self.start_time.today? && self.start_time.strftime('%H:%M:%S') < current_time))
-    "false"
-  else
-    "true"
+  validates :address, :presence => true, :length => { :minimum => 5 }
+
+  def happening
+    current_time = Time.now.strftime('%H:%M:%S')
+    if ((self.end_time.today? || self.end_time.past?) && self.end_time.strftime('%H:%M:%S') < current_time) || (self.start_time.past? || (self.start_time.today? && self.start_time.strftime('%H:%M:%S') < current_time)) || (self.status == 'booked')
+      "closed"
+    else
+      "open"
+    end
   end
- end
+
+  def upcoming
+    current_time = Time.now.strftime('%H:%M:%S')
+    if ((self.end_time.today? || self.end_time.past?) && self.end_time.strftime('%H:%M:%S') < current_time) || (self.start_time.past? || (self.start_time.today? && self.start_time.strftime('%H:%M:%S') < current_time))
+      "false"
+    else
+      "true"
+    end
+  end
 
   private
   def min_event_duration

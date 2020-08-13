@@ -20,8 +20,12 @@
     Start: <%= datetime_field(:appointment, :start_time) %>
   </div>
 
-    <div class="form-row mt-3 mx-auto">
+  <div class="form-row mt-3 mx-auto">
     End: <%= datetime_field(:appointment, :end_time) %>
+  </div>
+
+  <div class="form-row mt-3 mx-auto">
+    <%= f.text_area :address, placeholder: "Landmark: e.g. International Plaza", :rows => 4, style: 'width:100%; margin:auto' %>
   </div>
 
   <div class="form-row mt-3">
