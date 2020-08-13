@@ -16,6 +16,22 @@ $navy: rgb(53, 55, 68);
 
 @import "font-awesome";
 
+html, body {
+  height: 100%;
+}
+body {
+  margin:0px;
+  padding: 0px;
+}
+.wrap {
+  height: auto;
+  margin: 0 auto -80px; /* footer height + space */
+  min-height: 100%;
+  padding: 0 0 80px; /* footer height + space */
+  box-sizing: border-box;
+  overflow: auto;
+}
+
 body {
   font-family: 'Work Sans', Helvetica, sans-serif, sans-serif;
   font-size: 92%;
@@ -28,16 +44,16 @@ body {
 
 .appt-bg-div {
   background-color: $tertiary-color;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .landing-tags-div {
-  height: 110vh;
+  min-height: 110vh;
   background-color: $tertiary-color;
 }
 
 .no-appt {
-  height: 80vh;
+  min-height: 80vh;
   color: white;
 }
 
@@ -251,7 +267,7 @@ transform: translate(0, 0);
 }
 
 footer {
-  background-color: $secondary-color;
+  background-color: transparent;
   bottom: 0;
   margin-bottom: 0;
   padding-bottom: 0;
@@ -259,12 +275,12 @@ footer {
 }
 
 .footer-text {
-  color: white;
+  color: $main-color;
   transition: 200ms;
 }
 
 .footer-text, .footer-text a {
-  color: white;
+  color: $main-color;
   &:hover {
     color: $tertiary-color;
     text-decoration: none;
