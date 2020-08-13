@@ -1,7 +1,7 @@
-<div class="landing-div pb-5">
+<div class="landing-div">
 <div class="intro-section profile-section">
 <br>
-<h1 class="text-center profile-header">edit Profile</h1>
+<h1 class="text-center profile-header">available lunch buddies</h1>
   <div class="text-center mx-auto pb-4">
      <%= image_tag "bagel.png", class: "landing-img-xs img-fluid" %>
   </div>
@@ -77,7 +77,7 @@
   <% end %>
   
 <% if @noAppt.empty? %>
-<div class="text-center mx-auto">There are currently no available lunch buddies :(</p>
+<div class="text-center mx-auto no-appt">There are currently no available lunch buddies :(</p>
 <% end %>
 
 </div>

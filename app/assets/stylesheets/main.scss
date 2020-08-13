@@ -31,6 +31,11 @@ body {
   background-color: $tertiary-color;
 }
 
+.no-appt {
+  height: 80vh;
+  color: white;
+}
+
 .intro-section {
   min-height: 70vh;
   background-color: $main-color;
@@ -243,6 +248,9 @@ transform: translate(0, 0);
 footer {
   background-color: $secondary-color;
   bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  // margin-top: 30vh;
 }
 
 .footer-text {

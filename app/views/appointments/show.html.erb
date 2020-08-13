@@ -1,63 +1,101 @@
-<h1 class="text-center">View appointment</h1>
+<div class="landing-div pb-5">
+<div class="intro-section profile-section">
+<br>
+<h1 class="text-center profile-header">view appointment</h1>
 <div class="text-center mx-auto pb-4">
      <%= image_tag "bagel.png", class: "landing-img-xs img-fluid" %>
 </div>
 
-<div class="border col-6 p-2 mx-auto text-center">
-  <p><b><%= link_to @appointment.poster.username, user_path(@appointment.poster.id) %></b> is looking for a lunch buddy!</p>
-  <p>"<%= @appointment.title %>"</p>
-   <p><%= @appointment.content %></p>
-  <p>Status: <%= @appointment.status %></p>
-  <p>Start: <%= @appointment.start_time.strftime('%a, %d %b %Y at %I:%M %p') %></p>
-  <p>End: <%= @appointment.end_time.strftime('%a, %d %b %Y at %I:%M %p') %></p>
+<div class="appt-card card mx-auto mb-4 p-2 text-left d-flex flex-column justify-content-between">
+      <div class="appt-tags text-left">
+      <%= fa_icon "tags" %>
+        <% @appointment.locations.each do |l| %>
+            <span><%= link_to l.name, location_path(l), class: "badge badge-location" %></span>
+          <% end %>
+          <% @appointment.cuisines.each do |c| %>
+            <span><%= link_to c.name, cuisine_path(c), class: "badge badge-cuisine" %></span>
+          <% end %>
+          <% @appointment.prices.each do |p| %>
+            <span><%= link_to p.name, price_path(p), class: "badge badge-price" %></span>
+        <% end %>
+      </div>
+      <hr class="my-1">
+      <div class="appt-header">
+        <p><%= fa_icon "user" %> <b><%= link_to @appointment.poster.username, user_path(@appointment.poster.id)  %></b> is looking for a lunch buddy!</p>
+      </div>
+      <div class="appt-title">
+        <p><%= fa_icon "quote-left" %> <%= link_to @appointment.title, appointment_path(@appointment) %></p>
+      </div>
+      <hr class="my-1">
+      <div class="appt-time d-flex">
+        <div class=""><span class="time-label">Starts</span> <p><%= @appointment.start_time.strftime('%a, %d %b %Y at %I:%M %p') %></p></div>
+        <div class="time-vertical-div px-2"><%= fa_icon "arrow-circle-right" %></div>
+        <div><span class="time-label">Ends</span> <p><%= @appointment.end_time.strftime('%a, %d %b %Y at %I:%M %p')%></p></div>
+      </div>
+      <hr class="my-1">
+      <div class="appt-btns text-center">
+        
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal<%= @appointment.id %>">
+          Details
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="modal<%= @appointment.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Posted by <%= @appointment.poster.firstname %> <%= @appointment.poster.lastname %></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= @appointment.content %>
+              </div>
+              <% if current_user.id != @appointment.poster.id && @appointment.status != "booked" %>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                <%= link_to "Accept Invitation", accept_path(@appointment), method: "put", class: "btn btn-sm btn-success" %>
+              </div>
+               <% end %>
+            </div>
+          </div>
+        </div>
 
-<div class="text-center mb-3">
-  <% @appointment.locations.each do |l| %>
-    <span><%= link_to l.name, location_path(l), class: "badge badge-location" %></span>
-  <% end %>
-  <% @appointment.cuisines.each do |c| %>
-    <span><%= link_to c.name, cuisine_path(c), class: "badge badge-cuisine" %></span>
-  <% end %>
-  <% @appointment.prices.each do |p| %>
-    <span><%= link_to p.name, price_path(p), class: "badge badge-price" %></span>
-  <% end %>
-</div>
-  
-  <div class="mx-auto">
-     <% if current_user.id != @appointment.poster.id && @appointment.upcoming == "true" && @appointment.status != 'booked'%>
-        <%= link_to "Accept Invitation", accept_path(@appointment), method: "put", class: "btn btn-sm btn-success" %>
-        <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
-     <% elsif current_user.id != @appointment.poster.id && @appointment.status == 'booked' %>
-          <% if current_user.id != @appointment.poster.id && current_user.id != @appointment.respondent.id %>
-            <p>Someone has already accepted this invitation</p>
-          <% elsif current_user.id != @appointment.poster.id && current_user.id == @appointment.respondent.id %>
-            <p>You accepted this invitation</p>
-          <% elsif current_user.id == @appointment.poster.id && @appointment.status == "booked"%>
-            <% @respondent = User.find(@appointment.respondent.id)%>
-            <p><%= link_to @respondent.username, user_path(@respondent) %> accepted your invitation</p>
-          <% end %> 
-      <% end %> 
-      <% if @appointment.upcoming == 'false' %>
-        <p>This appointment has passed</p>
-      <% end %> 
-  </div>
+          <% if current_user.id != @appointment.poster.id && @appointment.upcoming == "true" && @appointment.status != 'booked'%>
+              <%= link_to "Accept Invitation", accept_path(@appointment), method: "put", class: "btn btn-sm btn-success" %>
+              <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
+          <% elsif current_user.id != @appointment.poster.id && @appointment.status == 'booked' %>
+                <% if current_user.id != @appointment.poster.id && current_user.id != @appointment.respondent.id %>
+                  <p>Someone has already accepted this invitation</p>
+                <% elsif current_user.id != @appointment.poster.id && current_user.id == @appointment.respondent.id %>
+                  <p>You accepted this invitation</p>
+                <% elsif current_user.id == @appointment.poster.id && @appointment.status == "booked"%>
+                  <% @respondent = User.find(@appointment.respondent.id)%>
+                  <p><%= link_to @respondent.username, user_path(@respondent) %> accepted your invitation</p>
+                <% end %> 
+            <% end %> 
+            <% if @appointment.upcoming == 'false' %>
+              <p>This appointment has passed</p>
+            <% end %> 
 
-  <div class="mx-auto">
-    <% if current_user.id == @appointment.poster.id && @appointment.status != "booked" %>
-    <%= link_to "Edit", edit_appointment_path(@appointment), class: "btn btn-sm btn-warning" %>
-    <%= link_to "Delete", appointment_path(@appointment), method: "DELETE", data:{ confirm: "Confirm?"}, class: "btn btn-sm btn-danger" %>
-    <% end %>
-  </div>
-
-  <div class="mx-auto">
+        <div class="mx-auto">
     <% if @appointment.upcoming == 'false' && @appointment.status == 'booked' %>
       <% if current_user.id == @appointment.poster.id && @appointment.poster_has_reviewed == false || current_user.id == @appointment.respondent.id && @appointment.respondent_has_reviewed == false %>
+      <hr class="my-1">
+
       <p>Review your lunch buddy:</p>
       <%= link_to "Upvote", upvote_path(@appointment), method: "put", class: "btn btn-sm btn-success" %>
       <%= link_to "Downvote", downvote_path(@appointment), method: "put", class: "btn btn-sm btn-success"%>
       <% elsif current_user.id == @appointment.poster.id && @appointment.poster_has_reviewed == true || current_user.id == @appointment.respondent.id && @appointment.respondent_has_reviewed == true %>
+      <hr class="my-1">
+
       <p>You have reviewed your buddy</p>
       <% end %> 
     <% end %> 
   </div>
+      </div>
+
+</div>
+</div>
 </div>
