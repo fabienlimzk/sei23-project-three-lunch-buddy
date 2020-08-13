@@ -10,6 +10,14 @@
       Account type: 
       <% if @user.isAdmin %> Admin <% else %> User <% end %>
       </h6>
+      <h6>
+      Reputation: <%= @user.reputation %>
+      </h6>
+      <h6 style="color:red;">
+      <% if @user.reputation < 0 && current_user.id != @user.id %>
+        Warning: Users with negative reputations have consistently received downvotes from past lunch buddies. Be cautious when accepting invitations. 
+      <% end %>
+      </h6>
 </div>
 
 <h1 class="text-center mb-3">Your Appointments</h1>
@@ -79,6 +87,14 @@
         <% else %>
         <p>Someone already accepted this invitation/You cannot accept your own invitation</p>
         <% end %>  
+        
+        <div class="mx-auto">
+          <% if current_user.id == a.poster.id && a.status != "booked" %>
+          <%= link_to "Edit", edit_user_appointment_path(@user, a), class: "btn btn-sm btn-warning" %>
+          <%= link_to "Delete", appointment_path(a), method: "DELETE", data:{ confirm: "Confirm?"}, class: "btn btn-sm btn-danger" %>
+          <% end %>
+        </div>
+
       </div>
     </div>
   <% end %>
