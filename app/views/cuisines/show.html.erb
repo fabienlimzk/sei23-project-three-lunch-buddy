@@ -19,7 +19,7 @@
       <hr class="my-1">
 
       <div class="appt-header">
-        <p><%= fa_icon "user" %> <b><%= a.poster.username %></b> is looking for a lunch buddy!</p>
+        <p><%= fa_icon "user" %> <b><%= link_to a.poster.username, user_path(a.poster.id)  %></b> is looking for a lunch buddy!</p>
       </div>
       <div class="appt-title">
         <p><%= fa_icon "quote-left" %> <%= link_to a.title, appointment_path(a) %></p>

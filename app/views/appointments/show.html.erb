@@ -1,7 +1,7 @@
 <h1 class="text-center">View appointment</h1>
 
 <div class="border col-6 p-2 mx-auto text-center">
-  <p><b><%= @appointment.poster.username %></b> is looking for a lunch buddy!</p>
+  <p><b><%= link_to @appointment.poster.username, user_path(@appointment.poster.id) %></b> is looking for a lunch buddy!</p>
   <p>"<%= @appointment.title %>"</p>
    <p><%= @appointment.content %></p>
   <p>Status: <%= @appointment.status %></p>
