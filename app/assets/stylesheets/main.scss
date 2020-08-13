@@ -30,6 +30,16 @@ body {
   border-bottom-right-radius: 90%;
 }
 
+.devise-section {
+  min-height: 90vh;
+  background-color: $main-color;
+  border-bottom-right-radius: 90%;
+}
+
+.input-group-text, .signup-fields input {
+  font-size: .75rem;
+}
+
 .intro-header {
   font-weight: bold;
   color: white;

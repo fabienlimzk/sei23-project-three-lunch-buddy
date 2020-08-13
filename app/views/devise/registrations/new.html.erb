@@ -1,3 +1,85 @@
+<div class="landing-div">
+<div class="devise-section section container-fluid">
+  <div class="row pt-3">
+  <div class="align-self-center col-10 mx-auto">
+    <h2 class="intro-header">sign up</h2>
+    
+    <div class="row signup-fields">
+    <div class="col-8 col-md-4">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">first name</span>
+      </div>
+      <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname", class: "form-control", placeholder: "Chonky" %>
+    </div>
+
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">last name</span>
+      </div>
+      <%= f.text_field :lastname, autocomplete: "lastname", class: "form-control", placeholder: "Catto" %>
+    </div>
+
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">☎️</span>
+      </div>
+      <%= f.text_field :phone, autocomplete: "phone", class: "form-control", placeholder: "98761234" %>
+    </div>
+
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">@username</span>
+      </div>
+      <%= f.text_field :username, autocomplete: "username", class: "form-control", placeholder: "ch0nkycat" %>
+    </div>
+
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">✉️</span>
+      </div>
+      <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "chonk@cat.com" %>
+    </div>
+
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">password</span>
+      </div>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "••••••" %>
+    </div>
+
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">confirm password</span>
+      </div>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "••••••" %>
+    </div>
+
+<div class="d-flex flex-column flex-md-row">
+<div class="devise-links">
+  <%= render "devise/shared/links" %>
+  </div>
+  <div class="actions ml-md-auto">
+    <div class="login-btn-div">
+    <%= f.submit "Signup →", class: "btn btn-login" %>
+    </div>
+  </div>
+  <% end %>
+  
+  </div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+    
+
+
+</div>
+
+
 <div class="card mx-auto col-10 col-md-6 shadow p-3 mb-5 bg-white rounded text-center">
 
 <h2>Sign up</h2>
