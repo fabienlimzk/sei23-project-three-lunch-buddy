@@ -26,6 +26,11 @@ body {
   background-color: $tertiary-color;
 }
 
+.landing-tags-div {
+  height: 100vh;
+  background-color: $tertiary-color;
+}
+
 .intro-section {
   min-height: 70vh;
   background-color: $main-color;
@@ -139,7 +144,7 @@ transform: translate(0, 0);
 }
 
 .collapse-link a {
-  color: $tertiary-color;
+  color: $main-color;
   transition: 300ms;
   &:hover {
     color: $navy;
@@ -150,7 +155,7 @@ transform: translate(0, 0);
 .appt-card {
   width: 320px;
   min-height: 290px;
-  border-top: 9px solid $tertiary-color;
+  border-top: 9px solid $light-green;
   color: $navy;
 }
 
@@ -182,6 +187,11 @@ transform: translate(0, 0);
 .table thead tr th, .table tbody tr td {
   border: none;
 }
+
+.table th {
+  color: white;
+}
+
 
 .table a:not(.btn) {
   color: $main-color;
@@ -231,32 +241,20 @@ transform: translate(0, 0);
 }
 
 footer {
-  position: fixed;
-  left: 0;
+  background-color: $secondary-color;
   bottom: 0;
-  width: 100%;
 }
 
-.copyright {
-  font-size: .55rem;
-  background-color: $main-color;
-  padding: 5px;
-  border-radius: 18px;
+.footer-text {
   color: white;
-  box-shadow: 2.2px 2.2px grey;
   transition: 200ms;
 }
 
-.page-footer, .page-footer a {
+.footer-text, .footer-text a {
   color: white;
   &:hover {
-    color: white;
+    color: $tertiary-color;
     text-decoration: none;
   }
 }
 
-.copyright:hover {
-  //background-color:$navy;
-  color: white;
-  box-shadow: 1.2px 1.2px grey;
-}

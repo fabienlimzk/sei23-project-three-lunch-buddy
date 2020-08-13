@@ -1,4 +1,7 @@
-<h1 class="text-center">All prices</h1>
+<div class="landing-tags-div pb-5">
+<div class="intro-section profile-section">
+<br>
+<h1 class="text-center profile-header">all prices</h1>
 
 <div class="row container d-flex flex-column-reverse flex-md-row mx-auto justify-content-between">
   <div class="col-11 col-md-6">
@@ -13,7 +16,7 @@
   </thead>
   <tbody>
       <% @prices.each do |price| %>
-      <tr><td><%= link_to price.name, price_path(price) %></td>
+      <tr><td><%= link_to price.name, price_path(price), style: "color:white" %></td>
     <% if current_user.isAdmin %>
         <td>
         <%= link_to "Edit", edit_price_path(price), class: "btn btn-warning btn-sm" %>
@@ -67,4 +70,6 @@
     <% end %>
   <% end %>
   </div>
+</div>
+</div>
 </div>

@@ -10,6 +10,9 @@ require("channels")
 require("bootstrap")
 require("jquery")
 require("main.js")
+//= require moment
+//= require bootstrap-datetimepicker
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

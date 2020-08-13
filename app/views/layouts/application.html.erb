@@ -71,17 +71,15 @@
     <% end%>
   <%# END FLASH MESSAGES %>
     <%= yield %>
-
-  </body>
-
-  <footer class="page-footer">
-    <div class="footer-copyright text-right py-2 pr-3">
-      <span class="copyright">
+  <footer class="footer">
+    <div class="text-center py-3 footer-text">
       <%= link_to "https://github.com/fabienlimzk/lunch-buddy" do %>
       © 2020 Chonky
         <%= fa_icon "github" %>
       <% end %>
-      </span>
     </div>
   </footer>
+  </body>
+
+
 </html>

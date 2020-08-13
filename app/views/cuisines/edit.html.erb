@@ -1,13 +1,17 @@
-<h1 class="text-center">Edit cuisine</h1>
-
+<div class="landing-tags-div pb-5">
+<div class="intro-section profile-section">
+<br>
+<h1 class="text-center profile-header">edit cuisine</h1>
 <div class="container mx-auto text-center">
 <%= form_for @cuisine do |f| %>
   <div class=“form-row”>
-    <%= f.label :name, "cuisine name" %><br>
+    <%= f.label :name, "cuisine name", style: "color:white" %><br>
     <%= f.text_field :name %>
   </div>
   <div class=“form-row”>
     <%= f.submit "Save", class: "btn btn-success mt-2" %>
   </div>
 <% end %>
+</div>
+</div>
 </div>
