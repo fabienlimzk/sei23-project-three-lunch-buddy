@@ -1,29 +1,57 @@
-<div class="card mx-auto col-10 col-md-6 shadow p-3 mb-5 bg-white rounded text-center">
+<div class="landing-div">
+<div class="intro-section section container-fluid">
+  <div class="row pt-3">
+  <div class="align-self-center col-10 mx-auto">
+    <h2 class="intro-header">log in</h2>
+    
+    <div class="row">
+    <div class="col-9 col-md-4">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">✉️</span>
+      </div>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "email" %>
+    </div>
 
-<h2>Log in</h2>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">&#128273;</span>
+      </div>
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "password" %>
+    </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="field">
+    <div class="field devise-links">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in", class: "btn btn-primary" %>
+<div class="d-flex">
+<div class="devise-links">
+  <%= render "devise/shared/links" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <div class="actions ml-auto">
+    <div class="login-btn-div">
+    <%= f.submit "Log in →", class: "btn btn-login" %>
+    </div>
+  </div>
+  <% end %>
+  
+  </div>
+    </div>
+    </div>
+  </div>
 </div>
+</div>
+    
+
+<div class="second-intro-section section d-flex container-fluid">
+  <div class="row">
+  <div class="align-self-center col-8 ml-auto">
+  </div>
+  </div>
+</div>
+</div>
+
