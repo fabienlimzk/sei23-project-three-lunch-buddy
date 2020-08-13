@@ -70,7 +70,7 @@
           <% if current_user.id != a.poster.id && current_user.id != a.respondent.id %>
             <p>Someone has already accepted this invitation</p>
           <% elsif current_user.id != a.poster.id && current_user.id == a.respondent.id %>
-            <p>You have accepted this invitation</p>
+            <p>You accepted this invitation</p>
           <% elsif current_user.id == a.poster.id && a.status == "booked"%>
             <% @respondent = User.find(a.respondent.id)%>
             <p><%= link_to @respondent.username, user_path(@respondent) %> accepted your invitation</p>
