@@ -20,13 +20,12 @@
       </h6>
 </div>
 
-<h1 class="text-center mb-3">Your Appointments</h1>
+<div class="text-center mx-auto">
+  <%= image_tag "bagel.png", class: "landing-img-xs img-fluid" %>
+</div>
 
-<div class="text-center mx-auto pb-4">
-     <%= image_tag "bagel.png", class: "landing-img-xs img-fluid" %>
-  </div>
-
-<h2 class="text-center mb-3">Upcoming</h2>
+<h1 class="text-center mb-3 collapse-link"><a data-toggle="collapse" href="#upcoming" role="button" aria-expanded="false" aria-controls="upcoming">Upcoming appointments <%= fa_icon "chevron-down" %></a></h1>
+<div class="collapse" id="upcoming">
 <div class="row d-flex flex-wrap mx-auto justify-content-between container">
   <% @appointments.reverse.each do |a| %>
     <% if a.upcoming == 'true' %>
@@ -92,6 +91,8 @@
         <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
         <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
         <% else %>
+        <hr class="my-1">
+
           <% if current_user.id != a.poster.id && current_user.id != a.respondent.id %>
             <p>Someone has already accepted this invitation</p>
           <% elsif current_user.id != a.poster.id && current_user.id == a.respondent.id %>
@@ -114,8 +115,15 @@
     <% end %>
   <% end %>
 </div>
-<h2 class="text-center mb-3">Past</h2>
-<div class="row d-flex flex-wrap mx-auto justify-content-between">
+</div>
+
+<div class="text-center mx-auto">
+  <%= image_tag "bagel.png", class: "landing-img-xs img-fluid" %>
+</div>
+<h1 class="text-center mb-3 collapse-link"><a data-toggle="collapse" href="#past" role="button" aria-expanded="false" aria-controls="upcoming">Past appointments <%= fa_icon "chevron-down" %>
+</a></h1>
+<div class="collapse" id="past">
+<div class="row d-flex flex-wrap mx-auto justify-content-between container">
   <% @appointments.reverse.each do |a| %>
     <% if a.upcoming == 'false' %>
     <div class="appt-card card mx-auto mb-4 p-2 text-left d-flex flex-column justify-content-between">
@@ -204,4 +212,5 @@
     </div>
     <% end %>
   <% end %>
+</div>
 </div>

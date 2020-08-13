@@ -131,6 +131,15 @@ transform: translate(0, 0);
   }
 }
 
+.collapse-link a {
+  color: $tertiary-color;
+  transition: 300ms;
+  &:hover {
+    color: $navy;
+    text-decoration: none;
+  }
+}
+
 .appt-card {
   width: 320px;
   min-height: 290px;

@@ -72,6 +72,7 @@
         <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
         <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
         <% else %>
+        <hr class="my-1">
           <% if current_user.id != a.poster.id && current_user.id != a.respondent.id %>
             <p>Someone has already accepted this invitation</p>
           <% elsif current_user.id != a.poster.id && current_user.id == a.respondent.id %>
