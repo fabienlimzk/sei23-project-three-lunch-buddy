@@ -1,24 +1,19 @@
-<div class="intro-section">
+<% if @user.reputation < 0 && current_user.id != @user.id %>
+  <div class="alert alert-danger mb-0">
+  Warning: Users with negative reputations have consistently received downvotes from past lunch buddies. Be cautious when accepting invitations. 
+  </div>
+<% end %>
+<div class="intro-section profile-section">
 <br>
 <h1 class="text-center profile-header">Your Profile</h1>
-<div class="card mx-auto col-10 col-md-6 shadow p-3 mb-5 bg-white rounded text-center">
+<div class="card mx-auto col-10 col-md-4 shadow p-3 mb-5 bg-white rounded text-center">
 <div class="card-avatar">
-  <%= image_tag(current_user.avatar_thumbnail, :class => "profile-avatar img-fluid rounded-circle") %>
+  <%= image_tag(current_user.avatar_thumbnail, :class => "profile-avatar img-fluid rounded-circle pb-2") %>
 </div>
       <h4><p><strong><%= @user.username %></strong></p></h4>
-      <p><%= @user.firstname %> <%= @user.lastname %></p>
-      <h6>
-      Account type: 
-      <% if @user.isAdmin %> Admin <% else %> User <% end %>
-      </h6>
-      <h6>
-      Reputation: <%= @user.reputation %>
-      </h6>
-      <h6 style="color:red;">
-      <% if @user.reputation < 0 && current_user.id != @user.id %>
-        Warning: Users with negative reputations have consistently received downvotes from past lunch buddies. Be cautious when accepting invitations. 
-      <% end %>
-      </h6>
+      <p class="lead"><%= @user.firstname %> <%= @user.lastname %></p>
+      <p><b>Account type:</b> <% if @user.isAdmin %> Admin <% else %> User <% end %>
+      <p><b>Reputation:</b> <%= @user.reputation %></p>
 </div>
 </div>
 
@@ -29,8 +24,12 @@
 <h1 class="text-center mb-3 collapse-link"><a data-toggle="collapse" href="#upcoming" role="button" aria-expanded="false" aria-controls="upcoming">Upcoming appointments <%= fa_icon "chevron-down" %></a></h1>
 <div class="collapse" id="upcoming">
 <div class="row d-flex flex-wrap mx-auto justify-content-between container">
+<% @noUpcomingAppt = [] %>
+
   <% @appointments.reverse.each do |a| %>
+
     <% if a.upcoming == 'true' %>
+      <% @noUpcomingAppt << a.id %>
     <div class="appt-card card mx-auto mb-4 p-2 text-left d-flex flex-column justify-content-between">
       <div class="appt-tags text-left">
       <%= fa_icon "tags" %>
@@ -116,7 +115,11 @@
     </div>
     <% end %>
   <% end %>
+  <% if @noUpcomingAppt.empty? %>
+    <div class="text-center mx-auto">No upcoming appointments :(</p></div>
+  <% end %>
 </div>
+
 </div>
 
 <div class="text-center mx-auto">
@@ -126,8 +129,11 @@
 </a></h1>
 <div class="collapse" id="past">
 <div class="row d-flex flex-wrap mx-auto justify-content-between container">
+<% @noPastAppt = [] %>
   <% @appointments.reverse.each do |a| %>
     <% if a.upcoming == 'false' %>
+    <% @noPastAppt << a.id %>
+
     <div class="appt-card card mx-auto mb-4 p-2 text-left d-flex flex-column justify-content-between">
       <div class="appt-tags text-left">
       <%= fa_icon "tags" %>
@@ -213,6 +219,9 @@
       </div>
     </div>
     <% end %>
+  <% end %>
+    <% if @noPastAppt.empty? %>
+    <div class="text-center mx-auto">No past appointments :(</p></div>
   <% end %>
 </div>
 </div>
