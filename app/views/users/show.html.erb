@@ -47,7 +47,7 @@
       <hr class="my-1">
       <div class="appt-btns text-center">
         
-        <% if current_user.id != a.poster.id && a.status != "booked" %>
+        
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal<%= a.id %>">
           Details
@@ -66,18 +66,27 @@
               <div class="modal-body">
                 <%= a.content %>
               </div>
+              <% if current_user.id != a.poster.id && a.status != "booked" %>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
                 <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
               </div>
+              <% end %>
             </div>
           </div>
         </div>
-
+        <% if current_user.id != a.poster.id && a.status != "booked" %>
         <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
         <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
         <% else %>
-        <p>Someone already accepted this invitation/You cannot accept your own invitation</p>
+          <% if current_user.id != a.poster.id && current_user.id != a.respondent.id %>
+            <p>Someone has already accepted this invitation</p>
+          <% elsif current_user.id != a.poster.id && current_user.id == a.respondent.id %>
+            <p>You have accepted this invitation</p>
+          <% elsif current_user.id == a.poster.id && a.status == "booked"%>
+            <% @respondent = User.find(a.respondent.id)%>
+            <p><%= link_to @respondent.username, user_path(@respondent) %> accepted your invitation</p>
+          <% end %> 
         <% end %>  
         
         <div class="mx-auto">

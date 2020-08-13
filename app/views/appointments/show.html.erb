@@ -20,12 +20,19 @@
 </div>
   
   <div class="mx-auto">
-    <% if current_user.id != @appointment.poster.id && @appointment.status != "booked" %>
-    <%= link_to "Accept Invitation", accept_path(@appointment), method: "put", class: "btn btn-sm btn-success" %>
-    <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
-    <% else %>
-    <p>Someone already accepted this invitation/You cannot accept your own invitation</p>
-    <% end %>  
+     <% if current_user.id != @appointment.poster.id && @appointment.status != "booked" %>
+        <%= link_to "Accept Invitation", accept_path(@appointment), method: "put", class: "btn btn-sm btn-success" %>
+        <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
+        <% else %>
+          <% if current_user.id != @appointment.poster.id && current_user.id != @appointment.respondent.id %>
+            <p>Someone has already accepted this invitation</p>
+          <% elsif current_user.id != @appointment.poster.id && current_user.id == @appointment.respondent.id %>
+            <p>You have accepted this invitation</p>
+          <% elsif current_user.id == @appointment.poster.id && @appointment.status == "booked"%>
+            <% @respondent = User.find(@appointment.respondent.id)%>
+            <p><%= link_to @respondent.username, user_path(@respondent) %> accepted your invitation</p>
+          <% end %> 
+        <% end %>   
   </div>
 
   <div class="mx-auto">
@@ -42,7 +49,7 @@
       <%= link_to "Upvote", upvote_path(@appointment), method: "put", class: "btn btn-sm btn-success" %>
       <%= link_to "Downvote", downvote_path(@appointment), method: "put", class: "btn btn-sm btn-success"%>
       <% elsif current_user.id == @appointment.poster.id && @appointment.poster_has_reviewed == true || current_user.id == @appointment.respondent.id && @appointment.respondent_has_reviewed == true %>
-      <p>You have already reviewed your buddy.</p>
+      <p>You have reviewed your buddy.</p>
       <% end %> 
     <% end %> 
   </div>
