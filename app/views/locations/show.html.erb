@@ -1,6 +1,6 @@
 <h1 class="text-center">Appointments in this area: "<%= @location.name %>"</h1>
 
-<div class="row d-flex flex-wrap mx-auto justify-content-between">
+<div class="row d-flex flex-wrap mx-auto justify-content-between container">
 
   <% @location.appointments.reverse.each do |a| %>
     <div class="appt-card card mx-auto mb-4 p-2 text-left d-flex flex-column justify-content-between">
