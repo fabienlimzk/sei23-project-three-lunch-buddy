@@ -1,4 +1,4 @@
-console.log("main.js loaded")
+// console.log("main.js loaded")
 $(document).on("scroll", function () {
   let pageTop = $(document).scrollTop(); // distance from top of page
   let pageBottom = pageTop + $(window).height() // distance from bottom of page
@@ -13,3 +13,4 @@ $(document).on("scroll", function () {
     }
   };
 });
+
