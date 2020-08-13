@@ -1,11 +1,10 @@
 <h1 class="text-center">Appointments in this area: "<%= @location.name %>"</h1>
-<<<<<<< HEAD
-
-<div class="row d-flex flex-wrap mx-auto justify-content-between container">
-=======
+<div class="text-center mx-auto pb-4">
+     <%= image_tag "bagel.png", class: "landing-img-xs img-fluid" %>
+  </div>
+  
 <% @noAppt = [] %>
-<div class="row d-flex flex-wrap mx-auto justify-content-between">
->>>>>>> origin/master
+<div class="row d-flex flex-wrap mx-auto justify-content-between container">
 
   <% @location.appointments.reverse.each do |a| %>
     <% if a.happening == 'open' %>
