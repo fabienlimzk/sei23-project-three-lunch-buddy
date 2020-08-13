@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :appointments_posted, :class_name => 'Appointment', :foreign_key => 'poster_id'
   has_many :appointments_responded, :class_name => 'Appointment', :foreign_key => 'respondent_id'
   has_one_attached :avatar
+  has_one_attached :image
 
   def avatar_thumbnail
     if avatar.attached?
@@ -14,4 +15,12 @@ class User < ApplicationRecord
       "default_profile.png"  
     end  
   end  
+
+  def featured_image
+    if image.attached?
+      image.variant(resize: "150x150!").processed if image.attached?
+    else
+      "default_profile.png"  
+    end  
+  end 
 end
