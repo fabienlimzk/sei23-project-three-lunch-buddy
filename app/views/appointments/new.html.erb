@@ -1,5 +1,8 @@
-<h1 class="text-center">Looking for a lunch buddy?</h1>
-<div class="card mx-auto col-7 shadow p-3 mb-5 bg-white rounded text-center">
+<div class="landing-div pb-5">
+<div class="intro-section profile-section">
+<br>
+<h1 class="text-center profile-header">looking for a lunch buddy?</h1>
+<div class="card mx-auto col-10 col-md-8 shadow p-3 bg-white rounded text-center">
 <% if @appointment.errors.any? %>
   <%= pluralize(@appointment.errors.count, "error") %>
     <% @appointment.errors.full_messages.each do |message| %>
@@ -7,21 +10,25 @@
     <% end %>
 <% end %>
 
-<h4 class="text-left">Create a new lunch appointment</h4>
 <%= form_for [@user, @appointment] do |f| %>
   <div class="form-group mt-3 text-left">
+    <%= f.label :title %>
     <%= f.text_field :title, placeholder: "Lunch Buddy needed!", class: "form-control" %>
   </div>
   <div class="form-row mt-3 mx-auto">
-    <%= f.text_area :content, placeholder: "Looking for a lunch buddy around MBFC or Marina One area :)", :rows => 4, style: 'width:100%; margin:auto' %>
+    <%= f.label "message" %>
+    <%= f.text_area :content, class: "form-control", placeholder: "Looking for a lunch buddy around MBFC or Marina One area :)", :rows => 4, style: 'width:100%; margin:auto' %>
   </div>
 
   <div class="form-row mt-3 mx-auto">
-    Start: <%= datetime_field(:appointment, :start_time) %>
+    <%= f.label :start_time %>&nbsp;&nbsp;
+    <%= datetime_field(:appointment, :start_time) %>
+    
   </div>
 
   <div class="form-row mt-3 mx-auto">
-    End: <%= datetime_field(:appointment, :end_time) %>
+    <%= f.label :end_time %>&nbsp;&nbsp;
+    <%= datetime_field(:appointment, :end_time) %>
   </div>
 
   <div class="form-row mt-3 mx-auto">
@@ -29,17 +36,22 @@
   </div>
 
   <div class="form-row mt-3">
-    <%= f.collection_select(:cuisine_ids, Cuisine.all, :id, :name, {:prompt => "Choose Cuisine(s)"},{:multiple => true, :required => true, :class => "custom-select"}) %>
+    <%= f.label "Select cuisine(s)" %>
+    <%= f.collection_select(:cuisine_ids, Cuisine.all, :id, :name, {:prompt => "Select Cuisine(s)"},{:multiple => true, :required => true, :class => "custom-select"}) %>
   </div>
   <div class="form-row mt-3">
-    <%= f.collection_select(:location_ids, Location.all, :id, :name, {:prompt => "Choose Location(s)"},{:multiple => true, :required => true, :class => "custom-select"}) %>
+    <%= f.label "Select location(s)" %>
+    <%= f.collection_select(:location_ids, Location.all, :id, :name, {:prompt => "Select Location(s)"},{:multiple => true, :required => true, :class => "custom-select"}) %>
   </div>
   <div class="form-row mt-3">
-    <%= f.collection_select(:price_ids, Price.all, :id, :name, {:prompt => "Choose Price range"},{:multiple => true, :required => true, :class => "custom-select"}) %>
+    <%= f.label "Select price range(s)" %>
+    <%= f.collection_select(:price_ids, Price.all, :id, :name, {:prompt => "Select Price range"},{:multiple => true, :required => true, :class => "custom-select"}) %>
   </div>
 
   <div class=“form-row”>
     <%= f.submit "Create appointment", class: "btn btn-success mt-3" %>
   </div>
 <% end %>
+</div>
+</div>
 </div>
