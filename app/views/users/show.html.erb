@@ -80,12 +80,13 @@
         <p>Someone already accepted this invitation/You cannot accept your own invitation</p>
         <% end %>  
         
-        <% if current_user.id == a.poster.id && a.status != "booked" %>
         <div class="mx-auto">
-        <%= link_to "Edit", edit_user_appointment_path(@user, a), class: "btn btn-sm btn-warning" %>
-        <%= link_to "Delete", appointment_path(a), method: "DELETE", data:{ confirm: "Confirm?"}, class: "btn btn-sm btn-danger" %>
+          <% if current_user.id == a.poster.id && a.status != "booked" %>
+          <%= link_to "Edit", edit_user_appointment_path(@user, a), class: "btn btn-sm btn-warning" %>
+          <%= link_to "Delete", appointment_path(a), method: "DELETE", data:{ confirm: "Confirm?"}, class: "btn btn-sm btn-danger" %>
+          <% end %>
         </div>
-        <% end %>
+
       </div>
     </div>
   <% end %>

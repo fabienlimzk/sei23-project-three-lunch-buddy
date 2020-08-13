@@ -29,6 +29,13 @@
   </div>
 
   <div class="mx-auto">
+    <% if current_user.id == @appointment.poster.id && @appointment.status != "booked" %>
+    <%= link_to "Edit", edit_appointment_path(@appointment), class: "btn btn-sm btn-warning" %>
+    <%= link_to "Delete", appointment_path(@appointment), method: "DELETE", data:{ confirm: "Confirm?"}, class: "btn btn-sm btn-danger" %>
+    <% end %>
+  </div>
+
+  <div class="mx-auto">
     <% if @appointment.upcoming == 'false' && @appointment.status == 'booked' %>
       <% if current_user.id == @appointment.poster.id && @appointment.poster_has_reviewed == false || current_user.id == @appointment.respondent.id && @appointment.respondent_has_reviewed == false %>
       <p>Review your lunch buddy:</p>
