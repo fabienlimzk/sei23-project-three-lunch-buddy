@@ -44,16 +44,16 @@ body {
 
 .appt-bg-div {
   background-color: $tertiary-color;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .landing-tags-div {
-  height: 110vh;
+  min-height: 110vh;
   background-color: $tertiary-color;
 }
 
 .no-appt {
-  height: 80vh;
+  min-height: 80vh;
   color: white;
 }
 

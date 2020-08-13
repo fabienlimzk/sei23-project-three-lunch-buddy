@@ -24,8 +24,8 @@
 </div>
 
 <h1 class="text-center mb-3 collapse-link"><a data-toggle="collapse" href="#upcoming" role="button" aria-expanded="false" aria-controls="upcoming">Upcoming appointments <%= fa_icon "chevron-down" %></a></h1>
-<div class="collapse" id="upcoming">
-<div class="row d-flex flex-wrap mx-auto justify-content-between container">
+<div class="collapse mb-0" id="upcoming">
+<div class="row d-flex flex-wrap mx-auto justify-content-between container mb-0">
 <% @noUpcomingAppt = [] %>
 
   <% @appointments.reverse.each do |a| %>
@@ -151,7 +151,7 @@
 </div>
 <h1 class="text-center collapse-link"><a data-toggle="collapse" href="#past" role="button" aria-expanded="false" aria-controls="upcoming">Past appointments <%= fa_icon "chevron-down" %>
 </a></h1>
-<div class="collapse" id="past">
+<div class="collapse mb-0" id="past">
 <div class="row d-flex flex-wrap mx-auto justify-content-between container mb-0">
 <% @noPastAppt = [] %>
   <% @appointments.reverse.each do |a| %>
