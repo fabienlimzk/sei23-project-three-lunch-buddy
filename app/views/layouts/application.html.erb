@@ -14,7 +14,7 @@
   </head>
 
   <body>
-  
+  <div class="wrap">
   <%# START NAVBAR %>
   <% if user_signed_in? %>
     <nav class="navbar navbar-default navbar-expand-lg navbar-dark">
@@ -71,6 +71,8 @@
     <% end%>
   <%# END FLASH MESSAGES %>
     <%= yield %>
+    </div>
+
   <footer class="footer mb-0 mt-0">
     <div class="text-center py-3 footer-text">
       <%= link_to "https://github.com/fabienlimzk/lunch-buddy" do %>

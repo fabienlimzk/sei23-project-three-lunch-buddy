@@ -1,4 +1,7 @@
-<h1 class="text-center">Looking for a lunch buddy?</h1>
+<div class="landing-tags-div">
+<div class="intro-section profile-section">
+<br>
+<h1 class="text-center profile-header">Looking for a lunch buddy?</h1>
 <div class="card mx-auto col-7 shadow p-3 mb-5 bg-white rounded text-center">
 <% if @appointment.errors.any? %>
   <%= pluralize(@appointment.errors.count, "error") %>
@@ -38,4 +41,6 @@
     <%= f.submit "Edit appointment", class: "btn btn-success mt-3" %>
   </div>
 <% end %>
+</div>
+</div>
 </div>
