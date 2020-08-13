@@ -1,11 +1,13 @@
-<div class=“container”>
+<h1 class="text-center">Edit location</h1>
+
+<div class="container mx-auto text-center">
 <%= form_for @location do |f| %>
   <div class=“form-row”>
-    <%= f.label :name, "Name" %>
+    <%= f.label :name, "location name" %><br>
     <%= f.text_field :name %>
   </div>
   <div class=“form-row”>
-    <%= f.submit "Save" %>
+    <%= f.submit "Save", class: "btn btn-success mt-2" %>
   </div>
 <% end %>
 </div>
