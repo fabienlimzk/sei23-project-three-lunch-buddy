@@ -134,7 +134,21 @@ transform: translate(0, 0);
 .appt-card {
   width: 320px;
   min-height: 290px;
-  border-top: 6px solid $navy;
+  border-top: 9px solid $tertiary-color;
+}
+
+.appt-title {
+  color: $navy;
+}
+
+.appt-title a {
+  color: $main-color;
+  transition: 200ms;
+}
+
+.appt-title a:hover {
+  text-decoration: none;
+  color: $navy;
 }
 
 .appt-title {
