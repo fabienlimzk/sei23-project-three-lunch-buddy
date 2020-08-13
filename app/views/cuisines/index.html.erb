@@ -1,4 +1,7 @@
-<h1 class="text-center">All cuisines</h1>
+<div class="landing-tags-div pb-5">
+<div class="intro-section profile-section">
+<br>
+<h1 class="text-center profile-header">all cuisines</h1>
 
 <div class="row container d-flex flex-column-reverse flex-md-row mx-auto justify-content-between">
   <div class="col-11 col-md-6">
@@ -13,7 +16,7 @@
   </thead>
   <tbody>
       <% @cuisines.each do |cuisine| %>
-      <tr><td><%= link_to cuisine.name, cuisine_path(cuisine) %></td>
+      <tr><td><%= link_to cuisine.name, cuisine_path(cuisine), style: "color:white" %></td>
     <% if current_user.isAdmin %>
         <td>
         <%= link_to "Edit", edit_cuisine_path(cuisine), class: "btn btn-warning btn-sm" %>
@@ -68,3 +71,6 @@
   <% end %>
   </div>
 </div>
+  </div>
+</div>
+

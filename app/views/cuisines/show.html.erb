@@ -1,4 +1,7 @@
-<h1 class="text-center">Appointments relating to this cuisine: "<%= @cuisine.name %>"</h1>
+<div class="landing-div">
+<div class="intro-section profile-section">
+<br>
+<h1 class="text-center profile-header">Appointments relating to this cuisine: "<%= @cuisine.name %>"</h1>
 <div class="text-center mx-auto pb-4">
      <%= image_tag "bagel.png", class: "landing-img-xs img-fluid" %>
   </div>
@@ -89,6 +92,8 @@
   <% end %>
 
 <% if @noAppt.empty? %>
-<div class="text-center mx-auto">There are currently no open appointments in this tag ):</p>
+<div class="text-center mx-auto no-appt">There are currently no open appointments in this tag ):</p>
 <% end %>
+</div>
+</div>
 </div>
