@@ -88,6 +88,18 @@ h1 {
   background-color: $steel-blue;
 }
 
+section {
+  opacity: 0;
+  transition: opacity 1s;
+  transform: translate(0, 80px);
+  transition: all 1.5s;
+}
+  
+section.visible { 
+opacity: 1;
+transform: translate(0, 0);
+}
+
 .landing-img-xs {
   width: 30px;
 }
