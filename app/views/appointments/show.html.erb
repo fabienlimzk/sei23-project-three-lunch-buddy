@@ -1,4 +1,7 @@
 <h1 class="text-center">View appointment</h1>
+<div class="text-center mx-auto pb-4">
+     <%= image_tag "bagel.png", class: "landing-img-xs img-fluid" %>
+</div>
 
 <div class="border col-6 p-2 mx-auto text-center">
   <p><b><%= link_to @appointment.poster.username, user_path(@appointment.poster.id) %></b> is looking for a lunch buddy!</p>

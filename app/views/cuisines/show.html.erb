@@ -1,6 +1,10 @@
 <h1 class="text-center">Appointments relating to this cuisine: "<%= @cuisine.name %>"</h1>
+<div class="text-center mx-auto pb-4">
+     <%= image_tag "bagel.png", class: "landing-img-xs img-fluid" %>
+  </div>
+
 <% @noAppt = [] %>
-<div class="row d-flex flex-wrap mx-auto justify-content-between">
+<div class="row d-flex flex-wrap mx-auto justify-content-between container">
 
   <% @cuisine.appointments.reverse.each do |a| %>
     <% if a.happening == 'open' %>
@@ -66,8 +70,10 @@
 
         <% if current_user.id != a.poster.id && a.status != "booked" %>
         <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
+        
         <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
         <% else %>
+        <hr class="my-1">
           <% if current_user.id != a.poster.id && current_user.id != a.respondent.id %>
             <p>Someone has already accepted this invitation</p>
           <% elsif current_user.id != a.poster.id && current_user.id == a.respondent.id %>

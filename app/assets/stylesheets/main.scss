@@ -19,7 +19,7 @@ $navy: rgb(53, 55, 68);
 body {
   font-family: 'Work Sans', Helvetica, sans-serif, sans-serif;
   font-size: 92%;
-  //background-color: $tertiary-color;
+  color: $navy;
 }
 
 .landing-div {
@@ -30,6 +30,13 @@ body {
   min-height: 70vh;
   background-color: $main-color;
   border-bottom-right-radius: 90%;
+}
+
+.profile-header {
+  background-color: $main-color;
+  padding-top: 0;
+  margin-top: 0;
+  color: white;
 }
 
 .devise-section {
@@ -67,6 +74,7 @@ h1 {
   font-size: 1.4rem;
   font-weight: bold;
   text-transform: lowercase;
+  padding-top: 18px;
   padding-bottom: .8rem;
   margin-top: 20px;
 }
@@ -130,10 +138,30 @@ transform: translate(0, 0);
   }
 }
 
+.collapse-link a {
+  color: $tertiary-color;
+  transition: 300ms;
+  &:hover {
+    color: $navy;
+    text-decoration: none;
+  }
+}
+
 .appt-card {
   width: 320px;
   min-height: 290px;
-  border-top: 6px solid $navy;
+  border-top: 9px solid $tertiary-color;
+  color: $navy;
+}
+
+.appt-title a, .appt-header a, .accepted a {
+  color: $main-color;
+  transition: 200ms;
+}
+
+.appt-title a:hover, .appt-header a:hover, .accepted a:hover {
+  text-decoration: none;
+  color: $navy;
 }
 
 .appt-title {
@@ -164,7 +192,7 @@ transform: translate(0, 0);
 }
 
 .badge-location, .badge-location a {
-  background-color: $pastel-orange;
+  background-color: $secondary-color;
   color: white;
   &:hover {
     background-color: rgba(94, 92, 92, 0.562);
@@ -182,7 +210,7 @@ transform: translate(0, 0);
 }
 
 .badge-price, .badge-price a {
-  background-color: $red;
+  background-color: $navy;
   color: white;
   &:hover {
     background-color: rgba(94, 92, 92, 0.562);

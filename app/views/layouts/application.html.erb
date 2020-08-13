@@ -16,7 +16,11 @@
   <body>
   
   <%# START NAVBAR %>
+  <% if user_signed_in? %>
     <nav class="navbar navbar-default navbar-expand-lg navbar-dark">
+  <% else %>
+    <nav class="navbar navbar-default navbar-expand-lg navbar-dark">
+  <% end %>
     <div class="container-fluid">
     <%= image_tag "lunch-bag.png", class: "nav-logo navbar-brand" %>
     <% if user_signed_in? %>
