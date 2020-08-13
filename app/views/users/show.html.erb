@@ -14,8 +14,8 @@
       Reputation: <%= @user.reputation %>
       </h6>
       <h6 style="color:red;">
-      <% if @user.reputation < 0 %>
-        Warning: Users with negative reputations have consistently received downvotes from past lunch buddies. 
+      <% if @user.reputation < 0 && current_user.id != @user.id %>
+        Warning: Users with negative reputations have consistently received downvotes from past lunch buddies. Be cautious when accepting invitations. 
       <% end %>
       </h6>
 </div>
