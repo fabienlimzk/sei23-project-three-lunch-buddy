@@ -1,8 +1,9 @@
 <h1 class="text-center">View appointment</h1>
 
 <div class="border col-6 p-2 mx-auto text-center">
-  <p><b><%= @appointment.poster.username %></b> is looking for a lunch buddy!</p>
+  <p><b><%= link_to @appointment.poster.username, user_path(@appointment.poster.id) %></b> is looking for a lunch buddy!</p>
   <p>"<%= @appointment.title %>"</p>
+   <p><%= @appointment.content %></p>
   <p>Status: <%= @appointment.status %></p>
   <p>Start: <%= @appointment.start_time.strftime('%a, %d %b %Y at %I:%M %p') %></p>
   <p>End: <%= @appointment.end_time.strftime('%a, %d %b %Y at %I:%M %p') %></p>
@@ -20,12 +21,22 @@
 </div>
   
   <div class="mx-auto">
-    <% if current_user.id != @appointment.poster.id && @appointment.status != "booked" %>
-    <%= link_to "Accept Invitation", accept_path(@appointment), method: "put", class: "btn btn-sm btn-success" %>
-    <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
-    <% else %>
-    <p>Someone already accepted this invitation/You cannot accept your own invitation</p>
-    <% end %>  
+     <% if current_user.id != @appointment.poster.id && @appointment.upcoming == "true" && @appointment.status != 'booked'%>
+        <%= link_to "Accept Invitation", accept_path(@appointment), method: "put", class: "btn btn-sm btn-success" %>
+        <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
+     <% elsif current_user.id != @appointment.poster.id && @appointment.status == 'booked' %>
+          <% if current_user.id != @appointment.poster.id && current_user.id != @appointment.respondent.id %>
+            <p>Someone has already accepted this invitation</p>
+          <% elsif current_user.id != @appointment.poster.id && current_user.id == @appointment.respondent.id %>
+            <p>You accepted this invitation</p>
+          <% elsif current_user.id == @appointment.poster.id && @appointment.status == "booked"%>
+            <% @respondent = User.find(@appointment.respondent.id)%>
+            <p><%= link_to @respondent.username, user_path(@respondent) %> accepted your invitation</p>
+          <% end %> 
+      <% end %> 
+      <% if @appointment.upcoming == 'false' %>
+        <p>This appointment has passed</p>
+      <% end %> 
   </div>
 
   <div class="mx-auto">
@@ -42,7 +53,7 @@
       <%= link_to "Upvote", upvote_path(@appointment), method: "put", class: "btn btn-sm btn-success" %>
       <%= link_to "Downvote", downvote_path(@appointment), method: "put", class: "btn btn-sm btn-success"%>
       <% elsif current_user.id == @appointment.poster.id && @appointment.poster_has_reviewed == true || current_user.id == @appointment.respondent.id && @appointment.respondent_has_reviewed == true %>
-      <p>You have already reviewed your buddy.</p>
+      <p>You have reviewed your buddy</p>
       <% end %> 
     <% end %> 
   </div>

@@ -41,7 +41,7 @@
       <hr class="my-1">
 
       <div class="appt-header">
-        <p><%= fa_icon "user" %> <b><%= a.poster.username %></b> is looking for a lunch buddy!</p>
+        <p><%= fa_icon "user" %> <b><%=link_to a.poster.username, user_path(a.poster.id) %></b> is looking for a lunch buddy!</p>
       </div>
       <div class="appt-title">
         <p><%= fa_icon "quote-left" %> <%= link_to a.title, appointment_path(a) %></p>
@@ -55,7 +55,7 @@
       <hr class="my-1">
       <div class="appt-btns text-center">
         
-        <% if current_user.id != a.poster.id && a.status != "booked" %>
+        
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal<%= a.id %>">
           Details
@@ -74,18 +74,30 @@
               <div class="modal-body">
                 <%= a.content %>
               </div>
+              <% if current_user.id != a.poster.id && a.status != "booked" %>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
                 <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
               </div>
+              <% end %>
             </div>
           </div>
         </div>
-
+        <% if current_user.id != a.poster.id && a.status != "booked" %>
         <%= link_to "Accept Invitation", accept_path(a), method: "put", class: "btn btn-sm btn-success" %>
         <%# <button class="btn btn-success btn-sm">Accept Invitation</button> %>
         <% else %>
-        <p>Someone already accepted this invitation/You cannot accept your own invitation</p>
+          <hr class="my-1">
+          <div class="accepted">
+          <% if current_user.id != a.poster.id && current_user.id != a.respondent.id %>
+            <p>Someone has already accepted this invitation</p>
+          <% elsif current_user.id != a.poster.id && current_user.id == a.respondent.id %>
+            <p>You accepted this invitation</p>
+          <% elsif current_user.id == a.poster.id && a.status == "booked"%>
+            <% @respondent = User.find(a.respondent.id)%>
+            <p><b><%= link_to @respondent.username, user_path(@respondent) %></b> accepted your invitation</p>
+          <% end %> 
+          </div>
         <% end %>  
         
         <div class="mx-auto">

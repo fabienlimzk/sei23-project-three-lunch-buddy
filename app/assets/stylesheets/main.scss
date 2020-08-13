@@ -19,7 +19,7 @@ $navy: rgb(53, 55, 68);
 body {
   font-family: 'Work Sans', Helvetica, sans-serif, sans-serif;
   font-size: 92%;
-  //background-color: $tertiary-color;
+  color: $navy;
 }
 
 .landing-div {
@@ -135,18 +135,15 @@ transform: translate(0, 0);
   width: 320px;
   min-height: 290px;
   border-top: 9px solid $tertiary-color;
-}
-
-.appt-title {
   color: $navy;
 }
 
-.appt-title a {
+.appt-title a, .appt-header a, .accepted a {
   color: $main-color;
   transition: 200ms;
 }
 
-.appt-title a:hover {
+.appt-title a:hover, .appt-header a:hover, .accepted a:hover {
   text-decoration: none;
   color: $navy;
 }
