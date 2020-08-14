@@ -1,6 +1,6 @@
 # SEI-23 Project Two - Lunch Buddy
 - Made by **Team Chonky**. All Rights Reserved. - © 2020
-  ### Team Members
+### Team Members
   1. [Asey Koh](https://github.com/akjw)
   2. [Fabien Lim Zheng Kai](https://github.com/fabienlimzk)
   3. [Joey Lim](https://github.com/joeyqlim)
@@ -24,7 +24,7 @@ This website is created to help people feel less lonely when lunch time rolls ar
 - As a user, I want to be able to view and edit avatar and my posted/accepted lunch appointments on my profile page
 - As an admin, I want to be able to add/edit/delete existing tags so that I can maintain/wrangle tags for a better user experience
 
-### Models/ERD
+### [Models/ERD](https://dbdiagram.io/)
 <img src="/public/ERD.png" />
 
 ### [Wireframes](https://wireframe.cc/pro/edit/364416)
@@ -63,8 +63,7 @@ This website is created to help people feel less lonely when lunch time rolls ar
   rails s
   ```
 
-- Open this url in your browser
-  [http://localhost:3000](http://localhost:3000)
+- Open this url in your browser, [http://localhost:3000](http://localhost:3000)
 
 ## 5. Unsolved Problems/Things to Improve
 - Adding appointment(s) to your calender, e.g. Google Calendar
