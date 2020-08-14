@@ -14,7 +14,7 @@
   </head>
 
   <body>
-  
+  <div class="wrap">
   <%# START NAVBAR %>
   <% if user_signed_in? %>
     <nav class="navbar navbar-default navbar-expand-lg navbar-dark">
@@ -36,7 +36,7 @@
         <% if user_signed_in? %>
           <%# current_user.avatar %>
           <%# link_to "Home", appointments_path, class: "nav-item nav-link" %>
-          <%= link_to "Edit Account", edit_user_registration_path(current_user), class: "nav-item nav-link" %>
+          <%= link_to "Edit Account", edit_user_registration_path, class: "nav-item nav-link" %>
           <%= link_to "Profile", user_path(current_user), class: "nav-item nav-link" %>
           <%= link_to "New Appointment", new_user_appointment_path(current_user), class: "nav-item nav-link" %>
           
@@ -71,6 +71,8 @@
     <% end%>
   <%# END FLASH MESSAGES %>
     <%= yield %>
+    </div>
+
   <footer class="footer mb-0 mt-0">
     <div class="text-center py-3 footer-text">
       <%= link_to "https://github.com/fabienlimzk/lunch-buddy" do %>

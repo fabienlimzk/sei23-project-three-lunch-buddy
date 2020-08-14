@@ -1,5 +1,5 @@
 
-<div class="landing-tags-div pb-5">
+<div class="landing-tags-div">
 <div class="intro-section profile-section">
 <br>
 
@@ -98,15 +98,17 @@
       <% end %> 
     <% end %> 
   </div>
-  <div>
+  <div class="mt-4">
     <%= content_tag :div, class: "appointment", data: { appointment: @appointment } do %>
     <% end %>
 
-    <div class="text-center" style='max-width: 650px;'>
-      <div id="map" style='max-width: 650px; height: 400px;'></div>
-    </div>
-    
-    <%= javascript_pack_tag 'map' %>
+    <% if @appointment.address != nil %>
+      <div class="text-center" style='max-width: 650px;'>
+        <div id="map" style='max-width: 650px; height: 400px;'></div>
+      </div>
+      
+      <%= javascript_pack_tag 'map' %>
+    <% end %>
   </div>
       </div>
 </div>
